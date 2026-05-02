@@ -113,22 +113,29 @@ function App() {
         </div>
       </nav>
 
-      {/* Mobile Menu Overlay */}
+      {/* Mobile Menu Dropdown */}
       <div style={{
         position: 'fixed',
-        inset: 0,
-        backgroundColor: 'rgba(0,0,0,0.95)',
-        zIndex: 999,
+        top: isScrolled ? '60px' : '85px', // Sits right below the nav
+        left: '4vw',
+        right: '4vw',
+        backgroundColor: 'rgba(248, 246, 241, 0.98)',
+        backdropFilter: 'blur(20px)',
+        zIndex: 998,
         display: isMenuOpen ? 'flex' : 'none',
         flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        gap: '3rem',
-        transition: 'opacity 0.5s ease'
+        padding: '2.5rem 2rem',
+        gap: '2rem',
+        borderRadius: '20px',
+        border: '1px solid rgba(0,0,0,0.08)',
+        boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
+        transition: 'all 0.4s var(--transition-smooth)',
+        opacity: isMenuOpen ? 1 : 0,
+        transform: isMenuOpen ? 'translateY(0)' : 'translateY(-10px)'
       }}>
-        <button onClick={() => scrollToSection('work')} className="serif" style={{ fontSize: '2.5rem', color: 'white', fontWeight: '700' }}>WORK</button>
-        <button onClick={() => scrollToSection('about')} className="serif" style={{ fontSize: '2.5rem', color: 'white', fontWeight: '700' }}>ABOUT</button>
-        <button onClick={() => scrollToSection('contact')} className="serif" style={{ fontSize: '2.5rem', color: 'white', fontWeight: '700' }}>CONTACT</button>
+        <button onClick={() => scrollToSection('work')} className="serif interactive" style={{ fontSize: '1.4rem', color: '#1A1A1A', fontWeight: '700', textAlign: 'left', letterSpacing: '0.05em', background: 'transparent' }}>WORK</button>
+        <button onClick={() => scrollToSection('about')} className="serif interactive" style={{ fontSize: '1.4rem', color: '#1A1A1A', fontWeight: '700', textAlign: 'left', letterSpacing: '0.05em', background: 'transparent' }}>ABOUT</button>
+        <button onClick={() => scrollToSection('contact')} className="serif interactive" style={{ fontSize: '1.4rem', color: '#1A1A1A', fontWeight: '700', textAlign: 'left', letterSpacing: '0.05em', background: 'transparent' }}>CONTACT</button>
       </div>
 
       <style dangerouslySetInnerHTML={{
