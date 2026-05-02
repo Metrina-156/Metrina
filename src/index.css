@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+  --bg-color: #F8F6F1;
+  --text-color: #1A1A1A;
+  --accent-color: #5C45FF;
+  --dark-bg: #0F0F0F;
+  --dark-text: #F8F6F1;
+  
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'DM Sans', sans-serif;
+  
+  --transition-smooth: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, .serif {
+  font-family: var(--font-heading);
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  background: none;
+  border: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* Custom Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: multiply;
+  opacity: 0.2;
+  filter: blur(4px);
+  transition: width 0.3s var(--transition-smooth), 
+              height 0.3s var(--transition-smooth), 
+              opacity 0.3s var(--transition-smooth),
+              background-color 0.3s var(--transition-smooth);
+}
+
+.custom-cursor.hover {
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+  opacity: 1;
+  filter: blur(0);
+}
+
+/* Nav link buttons – styled to match the old <a> links */
+.nav-link {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  font-weight: 600;
+  opacity: 0.85;
+  transition: opacity 0.25s ease;
+}
+
+.nav-link:hover {
+  opacity: 1;
+}
+
+/* Utils */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 4vw;
+}
+
+.section-padding {
+  padding: 10vh 0;
+}
+
+.inverted {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* Hide Three.js on mobile */
+@media (max-width: 768px) {
+  .hero-canvas {
+    display: none;
+  }
+}
