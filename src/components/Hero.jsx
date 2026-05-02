@@ -117,8 +117,17 @@ const Hero = () => {
           60% {transform: translateX(-50%) translateY(-5px);}
         }
         @media (max-width: 768px) {
+          .hero-content h1 {
+            word-spacing: 5px !important;
+            padding-top: 20px !important;
+            line-height: 1.1 !important;
+          }
           .hero-content h1 span {
             margin-left: 0 !important;
+          }
+          .hero-cta {
+            padding: 1rem 2.5rem !important;
+            font-size: 0.9rem !important;
           }
         }
       `}} />

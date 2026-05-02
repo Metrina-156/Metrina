@@ -66,6 +66,12 @@ button {
               background-color 0.3s var(--transition-smooth);
 }
 
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
 .custom-cursor.hover {
   width: 40px;
   height: 40px;

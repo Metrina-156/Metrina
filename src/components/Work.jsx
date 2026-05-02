@@ -11,6 +11,7 @@ const Work = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
   const handleMouseEnter = (index) => {
+    if (window.innerWidth <= 768) return;
     setActiveIndex(index);
     gsap.to(`.project-content-${index}`, {
       height: 'auto',
@@ -21,6 +22,7 @@ const Work = () => {
   };
 
   const handleMouseLeave = (index) => {
+    if (window.innerWidth <= 768) return;
     setActiveIndex(null);
     gsap.to(`.project-content-${index}`, {
       height: 0,
@@ -59,14 +61,14 @@ const Work = () => {
                   <span style={{ fontSize: '0.8rem', opacity: 0.4 }}>0{i + 1}</span>
                   <h3 className="serif" style={{ fontSize: '2.5rem' }}>{project.title}</h3>
                 </div>
-                <div style={{ display: 'flex', gap: '4rem', opacity: 0.6, fontSize: '0.9rem' }}>
+                <div className="project-meta" style={{ display: 'flex', gap: '4rem', opacity: 0.6, fontSize: '0.9rem' }}>
                   <span>{project.tag}</span>
                   <span>{project.year}</span>
                 </div>
               </div>
 
               <div
-                className={`project-content-${i}`}
+                className={`project-content-${i} project-expandable-content`}
                 style={{
                   height: 0,
                   opacity: 0,
@@ -105,12 +107,21 @@ const Work = () => {
           padding: 3rem 0 1rem 0;
         }
         @media (max-width: 768px) {
-          .project-content-${activeIndex} {
+          .project-expandable-content {
+            height: auto !important;
+            opacity: 1 !important;
             grid-template-columns: 1fr !important;
+            padding-bottom: 3rem !important;
           }
           .project-visual {
             height: 250px !important;
             order: -1;
+          }
+          .project-meta {
+            display: none !important;
+          }
+          .project-header h3 {
+            font-size: 1.8rem !important;
           }
         }
       `}} />

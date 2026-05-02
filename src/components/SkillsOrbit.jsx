@@ -208,7 +208,10 @@ const SkillsOrbit = () => {
         }
         @media (max-width: 768px) {
           .orbit-container {
-            display: none;
+            transform: scale(0.5);
+            transform-origin: center center;
+            height: 350px !important;
+            margin-bottom: 0 !important;
           }
           .secondary-skills {
             flex-wrap: wrap;

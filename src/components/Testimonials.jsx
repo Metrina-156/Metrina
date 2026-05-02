@@ -18,15 +18,15 @@ const Testimonials = () => {
 
   return (
     <section className="section-padding" style={{ textAlign: 'center', background: '#F0EEE9' }}>
-      <div className="container" style={{
+      <div className="container testimonial-container" style={{
         maxWidth: '800px',
         backgroundColor: 'rgba(53, 181, 190, 0.6)',
         borderRadius: '30px',
-        padding: '20px'
+        padding: '40px'
       }}>
-        <div style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+        <div className="testimonial-content" style={{ minHeight: '300px', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <p className="serif" style={{
-            fontSize: 'clamp(32px, 4vw, 48px)',
+            fontSize: 'clamp(28px, 4vw, 48px)',
             fontStyle: 'italic',
             lineHeight: 1.2,
             marginBottom: '3rem',
@@ -44,6 +44,20 @@ const Testimonials = () => {
           </span>
         </div>
       </div>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 768px) {
+          .testimonial-container {
+            padding: 30px 20px !important;
+            border-radius: 20px !important;
+          }
+          .testimonial-content {
+            min-height: auto !important;
+          }
+          .testimonial-content p {
+            margin-bottom: 2rem !important;
+          }
+        }
+      `}} />
     </section>
   );
 };

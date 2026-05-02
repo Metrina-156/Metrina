@@ -2,8 +2,8 @@ import React from 'react';
 
 const Contact = () => {
   return (
-    <section className="section-padding" style={{ 
-      height: '100vh', 
+    <section className="section-padding contact-section" style={{ 
+      minHeight: '100vh', 
       display: 'flex', 
       flexDirection: 'column', 
       justifyContent: 'center',
@@ -42,7 +42,7 @@ const Contact = () => {
           hello@metrina.dev
         </a>
 
-        <div className="socials" style={{ 
+        <div className="socials contact-socials" style={{ 
           marginTop: '10vh', 
           display: 'flex', 
           justifyContent: 'center', 
@@ -62,6 +62,17 @@ const Contact = () => {
           0% { box-shadow: 0 0 0 0px rgba(0, 209, 255, 0.7); }
           70% { box-shadow: 0 0 0 10px rgba(0, 209, 255, 0); }
           100% { box-shadow: 0 0 0 0px rgba(0, 209, 255, 0); }
+        }
+        @media (max-width: 768px) {
+          .contact-section {
+            min-height: auto !important;
+            padding: 80px 0 !important;
+          }
+          .contact-socials {
+            margin-top: 60px !important;
+            flex-wrap: wrap;
+            gap: 1.5rem !important;
+          }
         }
       `}} />
     </section>

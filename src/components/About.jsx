@@ -84,7 +84,7 @@ const About = () => {
             I believe that digital products should be as much a piece of architecture as they are a piece of code. My philosophy is rooted in the intersection of structural discipline and creative fluidly.
           </p>
 
-          <div className="stats" style={{ display: 'flex', gap: '2rem' }}>
+          <div className="stats about-stats" style={{ display: 'flex', gap: '2rem' }}>
             <div className="stat-pill" style={{
               padding: '0.8rem 1.5rem',
               border: '1px solid rgba(0,0,0,0.1)',
@@ -113,6 +113,14 @@ const About = () => {
           }
           .about-visual {
             order: 2;
+            margin-top: 3rem;
+          }
+          .about-stats {
+            flex-direction: column;
+            gap: 1rem !important;
+          }
+          .stat-pill {
+            width: fit-content;
           }
         }
       `}} />

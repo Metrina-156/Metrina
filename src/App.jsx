@@ -9,10 +9,12 @@ import Work from './components/Work';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import gsap from 'gsap';
+import { Menu, X } from 'lucide-react';
 import viteLogo from './assets/vite.png';
 
 function App() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,13 +24,16 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
   const scrollToSection = (id) => {
     if (!id) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      return;
+    } else {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    setIsMenuOpen(false);
   };
 
   return (
@@ -47,7 +52,6 @@ function App() {
         alignItems: 'center',
         zIndex: 1000,
         transition: 'all 0.5s var(--transition-smooth)',
-        background: '#FFF5B4',
         backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.75)' : 'transparent',
         backdropFilter: isScrolled ? 'blur(10px)' : 'none',
         borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.05)' : 'none'
@@ -78,7 +82,8 @@ function App() {
           </div>
         </div>
 
-        <div style={{
+        {/* Desktop Links */}
+        <div className="desktop-nav" style={{
           display: 'flex',
           gap: '2rem',
           fontSize: '0.8rem',
@@ -90,7 +95,44 @@ function App() {
           <button onClick={() => scrollToSection('about')} className="interactive nav-link">ABOUT</button>
           <button onClick={() => scrollToSection('contact')} className="interactive nav-link">CONTACT</button>
         </div>
+
+        {/* Mobile Menu Toggle */}
+        <div className="mobile-nav-toggle" style={{ display: 'none', mixBlendMode: 'difference' }}>
+          <button onClick={toggleMenu} className="interactive" style={{ color: 'white' }}>
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div style={{
+        position: 'fixed',
+        inset: 0,
+        backgroundColor: 'rgba(0,0,0,0.95)',
+        zIndex: 999,
+        display: isMenuOpen ? 'flex' : 'none',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '3rem',
+        transition: 'opacity 0.5s ease'
+      }}>
+        <button onClick={() => scrollToSection('work')} className="serif" style={{ fontSize: '2.5rem', color: 'white', fontWeight: '700' }}>WORK</button>
+        <button onClick={() => scrollToSection('about')} className="serif" style={{ fontSize: '2.5rem', color: 'white', fontWeight: '700' }}>ABOUT</button>
+        <button onClick={() => scrollToSection('contact')} className="serif" style={{ fontSize: '2.5rem', color: 'white', fontWeight: '700' }}>CONTACT</button>
+      </div>
+
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @media (max-width: 768px) {
+          .desktop-nav {
+            display: none !important;
+          }
+          .mobile-nav-toggle {
+            display: block !important;
+          }
+        }
+      `}} />
 
 
       <main>

@@ -38,6 +38,15 @@ const Marquee = () => {
           0% { transform: translateX(0); }
           100% { transform: translateX(-50%); }
         }
+        @media (max-width: 768px) {
+          .marquee-wrapper {
+            padding: 1rem 0 !important;
+          }
+          .marquee-content span {
+            font-size: 0.9rem !important;
+            margin: 0 1rem !important;
+          }
+        }
       `}} />
     </div>
   );
