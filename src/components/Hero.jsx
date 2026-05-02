@@ -64,8 +64,12 @@ const Hero = () => {
           <button
             className="interactive hero-cta"
             onClick={() => {
-              const el = document.getElementById('work');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
+              if (window.lenis) {
+                window.lenis.scrollTo('#work');
+              } else {
+                const el = document.getElementById('work');
+                if (el) el.scrollIntoView({ behavior: 'smooth' });
+              }
             }}
             style={{
               fontFamily: 'Montserrat',

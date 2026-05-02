@@ -27,11 +27,20 @@ function App() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   const scrollToSection = (id) => {
-    if (!id) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (window.lenis) {
+      if (!id) {
+        window.lenis.scrollTo(0);
+      } else {
+        window.lenis.scrollTo(`#${id}`);
+      }
     } else {
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      // Fallback
+      if (!id) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
     setIsMenuOpen(false);
   };

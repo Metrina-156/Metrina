@@ -19,6 +19,8 @@ const SmoothScroll = ({ children }) => {
       infinite: false,
     });
 
+    window.lenis = lenis;
+
     lenis.on('scroll', ScrollTrigger.update);
 
     gsap.ticker.add((time) => {
