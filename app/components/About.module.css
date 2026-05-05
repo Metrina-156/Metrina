@@ -1,0 +1,69 @@
+.section {
+  position: relative;
+  padding: 10vh 0;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 8vw;
+  align-items: center;
+}
+
+.visual {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 0.8;
+  background-color: #e5e5e5;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  overflow: hidden;
+  position: relative;
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.textContainer {
+  /* will be animated by GSAP */
+}
+
+.philosophy {
+  font-family: var(--font-heading);
+  font-size: clamp(24px, 2.5vw, 32px);
+  line-height: 1.4;
+  margin-bottom: 3rem;
+}
+
+.stats {
+  display: flex;
+  gap: 2rem;
+}
+
+.statPill {
+  padding: 0.8rem 1.5rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  borderRadius: 100px;
+  fontSize: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    grid-template-columns: 1fr !important;
+  }
+  .visual {
+    order: 2;
+    margin-top: 3rem;
+  }
+  .stats {
+    flex-direction: column;
+    gap: 1rem !important;
+  }
+  .statPill {
+    width: fit-content;
+  }
+}

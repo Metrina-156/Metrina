@@ -1,14 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
 :root {
   --bg-color: #F8F6F1;
   --text-color: #1A1A1A;
   --accent-color: #5C45FF;
   --dark-bg: #0F0F0F;
   --dark-text: #F8F6F1;
-  
-  --font-heading: 'Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
   
   --transition-smooth: cubic-bezier(0.76, 0, 0.24, 1);
 }
@@ -24,13 +19,13 @@
 html, body {
   background-color: var(--bg-color);
   color: var(--text-color);
-  font-family: var(--font-body);
+  font-family: var(--font-body), sans-serif;
   overflow-x: hidden;
   line-height: 1.5;
 }
 
 h1, h2, h3, h4, .serif {
-  font-family: var(--font-heading);
+  font-family: var(--font-heading), serif;
   font-weight: 400;
 }
 
@@ -116,5 +111,21 @@ button {
 @media (max-width: 768px) {
   .hero-canvas {
     display: none;
+  }
+}
+
+/* Global Nav Overrides */
+@media (min-width: 769px) {
+  .mobile-nav-toggle {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-nav-toggle {
+    display: block !important;
   }
 }

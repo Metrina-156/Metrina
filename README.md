@@ -1,20 +1,36 @@
 
-# Metrina
-=======
-# React + Vite
+# METRINA | Next.js Elite Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An elite, architecturally precise portfolio for high-end digital artisans. Built with **Next.js 15**, **GSAP**, **Lenis**, and **Three.js**.
 
-Currently, two official plugins are available:
+## Technical Stack
+- **Framework:** Next.js 15 (App Router)
+- **Animation:** GSAP (@gsap/react) + ScrollTrigger
+- **Scrolling:** Lenis (Smooth Scroll)
+- **Typography:** next/font (Playfair Display & DM Sans)
+- **Styling:** CSS Modules
+- **3D/Visuals:** Three.js
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Getting Started
 
-## React Compiler
+First, install dependencies:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install --legacy-peer-deps
+```
 
-## Expanding the ESLint configuration
+Then, run the development server:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run dev
+```
+
+Build for production:
+
+```bash
+npm run build
+```
+
+## Design Principles
+Follows the **AetherForge Elite** design system. Every interaction is intentional, minimal, and architecturally disciplined. See `DESIGN.md` and `PRODUCT.md` for full brand guidelines.
 
