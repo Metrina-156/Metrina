@@ -13,7 +13,7 @@ const About = () => {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     gsap.to(textRef.current, {
       y: -50,
       scrollTrigger: {
@@ -30,9 +30,9 @@ const About = () => {
       <div className={`${styles.container} container`}>
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
-            <Image 
-              src="/about-image.png" 
-              alt="Metrina Philosophy" 
+            <Image
+              src="/about-image.png"
+              alt="Metrina Philosophy"
               fill
               style={{ objectFit: 'cover' }}
             />
@@ -41,7 +41,7 @@ const About = () => {
 
         <div className={styles.textContainer} ref={textRef}>
           <p className={`${styles.philosophy} serif`}>
-            Your Brand needs an digital presence, We are here to build an fully customized website to satisy your needs and to boost your brand reach. Metrina is a group of young and enthusiastic engineers developing real world applications
+            Metrina is a group of young and enthusiastic engineers developing real world application.<br /><br></br>We  are here to build an fully customized website to satisy your needs and to boost your brands reach.
           </p>
 
           <div className={styles.stats}>

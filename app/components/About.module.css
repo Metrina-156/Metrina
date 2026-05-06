@@ -1,12 +1,17 @@
 .section {
   position: relative;
   padding: 10vh 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
 }
 
 .container {
   display: grid;
   grid-template-columns: 1fr 1.2fr;
   gap: 8vw;
+  align-items: center;
 }
 
 .visual {
@@ -29,25 +34,32 @@
 
 .textContainer {
   /* will be animated by GSAP */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .philosophy {
   font-family: var(--font-heading);
-  font-size: clamp(24px, 2.5vw, 32px);
-  line-height: 1.4;
+  font-size: clamp(22px, 2.2vw, 30px);
+  line-height: 1.6;
   margin-bottom: 3rem;
+  text-align: left;
+  letter-spacing: -0.01em;
 }
 
 .stats {
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .statPill {
   padding: 0.8rem 1.5rem;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  borderRadius: 100px;
-  fontSize: 0.9rem;
+  border-radius: 100px;
+  font-size: 0.9rem;
 }
 
 @media (max-width: 768px) {
