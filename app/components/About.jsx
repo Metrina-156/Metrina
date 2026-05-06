@@ -41,15 +41,15 @@ const About = () => {
 
         <div className={styles.textContainer} ref={textRef}>
           <p className={`${styles.philosophy} serif`}>
-            I believe that digital products should be as much a piece of architecture as they are a piece of code. My philosophy is rooted in the intersection of structural discipline and creative fluidly.
+            Your Brand needs an digital presence, We are here to build an fully customized website to satisy your needs and to boost your brand reach. Metrina is a group of young and enthusiastic engineers developing real world applications
           </p>
 
           <div className={styles.stats}>
             <div className={styles.statPill}>
-              <strong>8+</strong> Years Experience
+              revolutionized designs
             </div>
             <div className={styles.statPill}>
-              <strong>50+</strong> Projects Shipped
+              providing 24/7 support
             </div>
           </div>
         </div>
