@@ -23,7 +23,7 @@ const Hero = () => {
         fill
         priority
         quality={100}
-        style={{ objectFit: 'cover', zIndex: -1 }}
+        style={{ objectFit: 'cover', zIndex: 0 }}
       />
       
       {/* Subtle Overlay to ensure text readability */}
