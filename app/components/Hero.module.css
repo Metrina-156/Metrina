@@ -12,7 +12,8 @@
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(248, 246, 241, 0.4); /* Warm off-white overlay at 40% */
+  background: rgba(248, 246, 241, 0.4);
+  /* Warm off-white overlay at 40% */
   z-index: 0;
 }
 
@@ -27,7 +28,10 @@
 
 .heroContent {
   z-index: 2;
-  textAlign: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .title {
@@ -37,7 +41,8 @@
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
-  letter-spacing: -0.02em;
+  align-items: center;
+  letter-spacing: -0.04em;
   font-weight: 450;
   word-spacing: 15px;
   padding-top: 50px;
@@ -48,7 +53,8 @@
 }
 
 .typewriter {
-  font-family: 'Magnolia Script', cursive; /* Fallback to cursive if not loaded */
+  font-family: 'Magnolia Script', cursive;
+  /* Fallback to cursive if not loaded */
   font-size: clamp(1.2rem, 2vw, 2rem);
   color: #62a092ff;
   min-height: 1.5em;
@@ -93,12 +99,19 @@
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-10px);
   }
+
   60% {
     transform: translateY(-5px);
   }
@@ -110,6 +123,7 @@
     padding-top: 20px !important;
     line-height: 1.1 !important;
   }
+
   .cta {
     padding: 1rem 2.5rem !important;
     font-size: 0.9rem !important;
