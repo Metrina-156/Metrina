@@ -40,19 +40,19 @@ const About = () => {
         </div>
 
         <div className={styles.textContainer} ref={textRef}>
-          <h2 id="about-title" className="serif" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Our Philosophy</h2>
           <p className={`${styles.philosophy} serif`}>
-            Metrina is a collective of engineers dedicated to bridging the gap between sophisticated technology and human-centric design.
+            Metrina is a group of young and enthusiastic engineers developing real world application.
             <br /><br />
-            We build fully customized digital platforms that don't just exist—they perform, scale, and elevate your brand's presence in an ever-evolving market.
+            We are here to build an fully customized website to satisy your needs and to boost your brands reach.
           </p>
 
           <div className={styles.stats}>
             <div className={styles.statPill}>
-              Bespoke Design
+              revolutionized designs
+
             </div>
             <div className={styles.statPill}>
-              Global Support
+              providing 24/7 support
             </div>
           </div>
         </div>
