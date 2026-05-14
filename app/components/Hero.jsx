@@ -51,7 +51,8 @@ const Hero = () => {
       </div>
 
       <div className={styles.scrollIndicator} aria-hidden="true">
-        <ChevronDown size={32} strokeWidth={1} className={styles.bounceArrow} />
+        <span className={styles.scrollText}>SCROLL</span>
+        <ChevronDown size={24} strokeWidth={1} className={styles.bounceArrow} />
       </div>
     </section>
   );

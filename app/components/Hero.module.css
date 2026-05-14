@@ -80,24 +80,33 @@
 
 .scrollIndicator {
   position: absolute;
-  bottom: 4rem;
-  left: 6vw;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
-  opacity: 0.3;
-  color: var(--text-color);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
+  opacity: 0.5;
+  color: var(--text-color);
+  pointer-events: none;
+}
+
+.scrollText {
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .bounceArrow {
-  animation: bounce 2.5s infinite var(--transition-smooth);
+  animation: bounce 2s infinite ease-in-out;
 }
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(15px); }
+  50% { transform: translateY(8px); }
 }
 
 @media (max-width: 768px) {
@@ -109,10 +118,6 @@
   }
   .title {
     margin-left: 0;
-  }
-  .scrollIndicator {
-    left: 50%;
-    transform: translateX(-50%);
   }
   .cta {
     width: 100%;
