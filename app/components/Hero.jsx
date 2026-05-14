@@ -16,42 +16,41 @@ const Hero = () => {
   };
 
   return (
-    <section className={styles.hero}>
+    <section className={styles.hero} aria-labelledby="hero-title">
       <Image
         src="/hero-bg.png"
-        alt="Bespoke Digital Background"
+        alt=""
         fill
         priority
         quality={100}
         style={{ objectFit: 'cover', zIndex: 0 }}
       />
       
-      {/* Subtle Overlay to ensure text readability */}
       <div className={styles.overlay}></div>
 
       <div className={styles.container}>
         <div className={styles.heroContent}>
-          <h1 className={`${styles.title} serif`}>
-            <span>your  brand  deserves  a  Digital  Presence</span>
+          <h1 id="hero-title" className={`${styles.title} serif`}>
+            Your brand deserves a Digital Presence
           </h1>
 
           <div className={styles.roleContainer}>
             <p className={styles.typewriter}>
-              Crafting fast, beautiful websites that grow your business
+              Crafting sophisticated digital experiences that scale
             </p>
           </div>
 
           <button
             className={`${styles.cta} interactive`}
             onClick={scrollToWork}
+            aria-label="View my work"
           >
             View Work
           </button>
         </div>
       </div>
 
-      {/* Scroll Arrow Indicator */}
-      <div className={styles.scrollIndicator}>
+      <div className={styles.scrollIndicator} aria-hidden="true">
         <ChevronDown size={32} strokeWidth={1} className={styles.bounceArrow} />
       </div>
     </section>

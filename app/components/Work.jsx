@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react';
 import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
 import Image from 'next/image';
 import styles from './Work.module.css';
 
@@ -15,42 +14,40 @@ const Work = () => {
 
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const handleMouseEnter = (index) => {
+  const handleInteraction = (index, entering) => {
     if (window.innerWidth <= 768) return;
-    setActiveIndex(index);
+    setActiveIndex(entering ? index : null);
+    
     gsap.to(`.project-content-${index}`, {
-      height: 'auto',
-      opacity: 1,
-      duration: 1.5,
-      ease: 'expo.out'
-    });
-  };
-
-  const handleMouseLeave = (index) => {
-    if (window.innerWidth <= 768) return;
-    setActiveIndex(null);
-    gsap.to(`.project-content-${index}`, {
-      height: 0,
-      opacity: 0,
-      duration: 1.5,
+      height: entering ? 'auto' : 0,
+      opacity: entering ? 1 : 0,
+      duration: 1.2,
       ease: 'expo.out'
     });
   };
 
   return (
-    <section className={`${styles.section} section-padding`}>
+    <section id="work" className={`${styles.section} section-padding`} aria-labelledby="work-title">
       <div className="container">
-        <h2 className={`serif ${styles.title}`}>Selected Works</h2>
+        <h2 id="work-title" className={`serif ${styles.title}`}>Selected Works</h2>
 
         <div className={styles.accordionWrapper}>
           {projects.map((project, i) => (
             <div
               key={project.id}
-              className={styles.projectRow}
-              onMouseEnter={() => handleMouseEnter(i)}
-              onMouseLeave={() => handleMouseLeave(i)}
+              className={`${styles.projectRow} ${activeIndex === i ? styles.active : ''}`}
+              onMouseEnter={() => handleInteraction(i, true)}
+              onMouseLeave={() => handleInteraction(i, false)}
             >
-              <div className={styles.projectHeader}>
+              <button
+                className={styles.projectHeader}
+                onClick={() => {
+                  if (window.innerWidth <= 768) return;
+                  handleInteraction(i, activeIndex !== i);
+                }}
+                aria-expanded={activeIndex === i}
+                aria-controls={`project-content-${i}`}
+              >
                 <div className={styles.headerLeft}>
                   <span className={styles.projectNumber}>0{i + 1}</span>
                   <h3 className={`${styles.projectTitle} serif`}>{project.title}</h3>
@@ -59,24 +56,27 @@ const Work = () => {
                   <span>{project.tag}</span>
                   <span>{project.year}</span>
                 </div>
-              </div>
+              </button>
 
               <div
+                id={`project-content-${i}`}
                 className={`project-content-${i} ${styles.projectContent}`}
-                style={{
-                  paddingBottom: activeIndex === i ? '4rem' : 0
-                }}
+                aria-hidden={activeIndex !== i}
               >
                 <div className={styles.projectInfo}>
                   <p className={styles.projectDesc}>{project.desc}</p>
-                  <a href="#" className={`${styles.exploreLink} interactive`}>EXPLORE PROJECT</a>
+                  <a href="#" className={`${styles.exploreLink} interactive`}>
+                    EXPLORE PROJECT
+                    <span className={styles.arrow}>→</span>
+                  </a>
                 </div>
                 <div className={styles.projectVisual}>
                   <Image 
                     src={project.img} 
-                    alt={project.title} 
+                    alt={`Preview of ${project.title}`} 
                     fill 
                     style={{ objectFit: 'cover' }}
+                    className={styles.projectImage}
                   />
                 </div>
               </div>

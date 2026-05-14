@@ -15,7 +15,7 @@ const About = () => {
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.to(textRef.current, {
-      y: -50,
+      y: -30,
       scrollTrigger: {
         trigger: containerRef.current,
         start: 'top bottom',
@@ -26,13 +26,13 @@ const About = () => {
   }, { scope: containerRef });
 
   return (
-    <section ref={containerRef} className={`${styles.section} section-padding`}>
+    <section ref={containerRef} className={`${styles.section} section-padding`} aria-labelledby="about-title">
       <div className={`${styles.container} container`}>
         <div className={styles.visual}>
           <div className={styles.imageWrapper}>
             <Image
               src="/about-image.png"
-              alt="Metrina Philosophy"
+              alt="Our creative team at work"
               fill
               style={{ objectFit: 'cover' }}
             />
@@ -40,16 +40,19 @@ const About = () => {
         </div>
 
         <div className={styles.textContainer} ref={textRef}>
+          <h2 id="about-title" className="serif" style={{ fontSize: '2.5rem', marginBottom: '2rem' }}>Our Philosophy</h2>
           <p className={`${styles.philosophy} serif`}>
-            Metrina is a group of young and enthusiastic engineers developing real world application.<br /><br></br>We  are here to build an fully customized website to satisy your needs and to boost your brands reach.
+            Metrina is a collective of engineers dedicated to bridging the gap between sophisticated technology and human-centric design.
+            <br /><br />
+            We build fully customized digital platforms that don't just exist—they perform, scale, and elevate your brand's presence in an ever-evolving market.
           </p>
 
           <div className={styles.stats}>
             <div className={styles.statPill}>
-              revolutionized designs
+              Bespoke Design
             </div>
             <div className={styles.statPill}>
-              providing 24/7 support
+              Global Support
             </div>
           </div>
         </div>

@@ -1,16 +1,16 @@
 .wrapper {
-  background: #EAE8E3;
-  padding: 2rem 0;
+  background: var(--bg-color);
+  padding: 4rem 0;
   overflow: hidden;
   display: flex;
-  whiteSpace: nowrap;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  border-bottom: 1px solid rgba(0,0,0,0.05);
+  white-space: nowrap;
+  border-top: 1px solid rgba(0,0,0,0.03);
+  border-bottom: 1px solid rgba(0,0,0,0.03);
 }
 
 .content {
   display: flex;
-  animation: scroll 20s linear infinite;
+  animation: scroll 40s linear infinite;
 }
 
 .itemWrapper {
@@ -19,28 +19,27 @@
 }
 
 .item {
-  font-size: 1.2rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  margin: 0 2rem;
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin: 0 4rem;
+  color: var(--text-color);
+  opacity: 0.25;
+  transition: opacity 0.5s var(--transition-smooth);
+}
+
+.item:hover {
+  opacity: 0.8;
 }
 
 .glyph {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   opacity: 0.3;
+  color: var(--accent-color);
 }
 
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
-}
-
-@media (max-width: 768px) {
-  .wrapper {
-    padding: 1rem 0 !important;
-  }
-  .item {
-    font-size: 0.9rem !important;
-    margin: 0 1rem !important;
-  }
 }

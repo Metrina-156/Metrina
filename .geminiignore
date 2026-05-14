@@ -1,0 +1,62 @@
+# Dependencies
+node_modules/
+jspm_packages/
+
+# Next.js Build Output
+.next/
+out/
+build/
+dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+coverage/
+tmp/
+temp/
+
+# Lock Files (usually unnecessary for context)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+bun.lockb
+
+# Environment Variables
+.env*
+!.env.example
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Media Assets (Binary files that shouldn't be parsed)
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.ico
+*.mp4
+*.webm
+*.ogg
+*.mp3
+*.wav
+*.flac
+*.aac
+*.pdf
+*.zip
+*.tar
+*.gz
+*.7z
+
+# Internal Gemini Data
+.gemini/

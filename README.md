@@ -32,5 +32,4 @@ npm run build
 ```
 
 ## Design Principles
-Follows the **AetherForge Elite** design system. Every interaction is intentional, minimal, and architecturally disciplined. See `DESIGN.md` and `PRODUCT.md` for full brand guidelines.
-
+Follows the **AetherForge Elite** design system. Every interaction is intentional, minimal, and architecturally disciplined.

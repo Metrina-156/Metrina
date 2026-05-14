@@ -1,12 +1,20 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 const SmoothScroll = ({ children }) => {
+  const [isMounted, setIsMounted] = useState(false);
+
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     gsap.registerPlugin(ScrollTrigger);
     
     const lenis = new Lenis({
@@ -35,7 +43,7 @@ const SmoothScroll = ({ children }) => {
       lenis.destroy();
       gsap.ticker.remove(lenis.raf);
     };
-  }, []);
+  }, [isMounted]);
 
   return <>{children}</>;
 };

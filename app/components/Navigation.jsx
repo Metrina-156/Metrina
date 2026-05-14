@@ -36,89 +36,115 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  const navTheme = isScrolled ? {
+    bg: 'rgba(15, 15, 15, 0.9)',
+    text: 'var(--dark-text)',
+    border: 'rgba(255,255,255,0.05)',
+    logoColor: 'var(--accent-color)'
+  } : {
+    bg: 'transparent',
+    text: 'var(--text-color)',
+    border: 'transparent',
+    logoColor: 'var(--text-color)'
+  };
+
   return (
     <>
-      <nav style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        width: '100%',
-        padding: isScrolled ? '1rem 4vw' : '2rem 4vw',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        zIndex: 1000,
-        transition: 'all 0.5s var(--transition-smooth)',
-        backgroundColor: isScrolled ? 'rgba(0, 0, 0, 0.75)' : 'transparent',
-        backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-        borderBottom: isScrolled ? '1px solid rgba(0,0,0,0.05)' : 'none'
-      }}>
+      <nav 
+        aria-label="Main navigation"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          padding: isScrolled ? '1.2rem 6vw' : '2.5rem 6vw',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          zIndex: 1000,
+          transition: 'all 0.6s var(--transition-smooth)',
+          backgroundColor: navTheme.bg,
+          backdropFilter: isScrolled ? 'blur(12px)' : 'none',
+          borderBottom: `1px solid ${navTheme.border}`
+        }}
+      >
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-          <div className="nav-logo" style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }} onClick={() => scrollToSection(null)}>
-            <Image src="/vite.png" alt="Logo" width={45} height={45} style={{ height: '45px', width: 'auto' }} />
-          </div>
-
-          <div className="nav-name" style={{ mixBlendMode: 'difference' }}>
+          <button 
+            className="interactive"
+            aria-label="Go to home"
+            onClick={() => scrollToSection(null)}
+            style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}
+          >
+            <Image 
+              src="/vite.png" 
+              alt="" 
+              width={38} 
+              height={38} 
+              style={{ height: '38px', width: 'auto' }} 
+            />
             <span
-              className="serif interactive"
-              onClick={() => scrollToSection(null)}
+              className="serif"
               style={{
                 fontFamily: 'var(--font-heading)',
-                fontSize: '1.5rem',
+                fontSize: '1.4rem',
                 fontWeight: '800',
-                letterSpacing: '0.1em',
+                letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: '#09f7bcff',
+                color: navTheme.logoColor,
                 lineHeight: 1,
-                cursor: 'pointer',
-                userSelect: 'none',
+                transition: 'color 0.4s var(--transition-smooth)'
               }}
-            >METRINA</span>
-          </div>
+            >
+              METRINA
+            </span>
+          </button>
         </div>
 
         <div className="desktop-nav" style={{
           display: 'flex',
-          gap: '2rem',
-          fontSize: '0.8rem',
-          letterSpacing: '0.15em',
-          fontWeight: '600',
-          mixBlendMode: 'difference'
+          gap: '3rem',
+          alignItems: 'center'
         }}>
-          <button onClick={() => scrollToSection('work')} className="interactive nav-link">WORK</button>
-          <button onClick={() => scrollToSection('about')} className="interactive nav-link">ABOUT</button>
-          <button onClick={() => scrollToSection('contact')} className="interactive nav-link">CONTACT</button>
+          <button onClick={() => scrollToSection('work')} className="interactive nav-link" style={{ color: navTheme.text }}>WORK</button>
+          <button onClick={() => scrollToSection('about')} className="interactive nav-link" style={{ color: navTheme.text }}>ABOUT</button>
+          <button onClick={() => scrollToSection('contact')} className="interactive nav-link" style={{ color: navTheme.text }}>CONTACT</button>
         </div>
 
-        <div className="mobile-nav-toggle" style={{ mixBlendMode: 'difference' }}>
-          <button onClick={toggleMenu} className="interactive" style={{ color: 'white' }}>
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+        <div className="mobile-nav-toggle" style={{ display: 'none' }}>
+          <button 
+            onClick={toggleMenu} 
+            className="interactive" 
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            style={{ color: navTheme.text }}
+          >
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
       </nav>
 
-      <div style={{
-        position: 'fixed',
-        top: isScrolled ? '60px' : '85px',
-        left: '4vw',
-        right: '4vw',
-        backgroundColor: 'rgba(248, 246, 241, 0.98)',
-        backdropFilter: 'blur(20px)',
-        zIndex: 998,
-        display: isMenuOpen ? 'flex' : 'none',
-        flexDirection: 'column',
-        padding: '2.5rem 2rem',
-        gap: '2rem',
-        borderRadius: '20px',
-        border: '1px solid rgba(0,0,0,0.08)',
-        boxShadow: '0 30px 60px rgba(0,0,0,0.12)',
-        transition: 'all 0.4s var(--transition-smooth)',
-        opacity: isMenuOpen ? 1 : 0,
-        transform: isMenuOpen ? 'translateY(0)' : 'translateY(-10px)'
-      }}>
-        <button onClick={() => scrollToSection('work')} className="serif interactive" style={{ fontSize: '1.4rem', color: '#1A1A1A', fontWeight: '700', textAlign: 'left', letterSpacing: '0.05em', background: 'transparent' }}>WORK</button>
-        <button onClick={() => scrollToSection('about')} className="serif interactive" style={{ fontSize: '1.4rem', color: '#1A1A1A', fontWeight: '700', textAlign: 'left', letterSpacing: '0.05em', background: 'transparent' }}>ABOUT</button>
-        <button onClick={() => scrollToSection('contact')} className="serif interactive" style={{ fontSize: '1.4rem', color: '#1A1A1A', fontWeight: '700', textAlign: 'left', letterSpacing: '0.05em', background: 'transparent' }}>CONTACT</button>
+      <div 
+        id="mobile-menu"
+        style={{
+          position: 'fixed',
+          inset: 0,
+          backgroundColor: 'var(--dark-bg)',
+          zIndex: 998,
+          display: isMenuOpen ? 'flex' : 'none',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          padding: '2.5rem',
+          gap: '3rem',
+          transition: 'opacity 0.4s var(--transition-smooth)',
+          opacity: isMenuOpen ? 1 : 0,
+          pointerEvents: isMenuOpen ? 'auto' : 'none'
+        }}
+      >
+        <button onClick={() => scrollToSection('work')} className="serif interactive" style={{ fontSize: '3rem', color: 'var(--dark-text)', fontWeight: '400', letterSpacing: '0.05em' }}>WORK</button>
+        <button onClick={() => scrollToSection('about')} className="serif interactive" style={{ fontSize: '3rem', color: 'var(--dark-text)', fontWeight: '400', letterSpacing: '0.05em' }}>ABOUT</button>
+        <button onClick={() => scrollToSection('contact')} className="serif interactive" style={{ fontSize: '3rem', color: 'var(--dark-text)', fontWeight: '400', letterSpacing: '0.05em' }}>CONTACT</button>
       </div>
     </>
   );

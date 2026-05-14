@@ -5,9 +5,16 @@ import gsap from 'gsap';
 
 const CustomCursor = () => {
   const cursorRef = useRef(null);
+  const [isMounted, setIsMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted) return;
+
     const cursor = cursorRef.current;
     
     const moveCursor = (e) => {
@@ -34,7 +41,9 @@ const CustomCursor = () => {
       window.removeEventListener('mousemove', moveCursor);
       window.removeEventListener('mouseover', handleHover);
     };
-  }, []);
+  }, [isMounted]);
+
+  if (!isMounted) return null;
 
   return (
     <div 

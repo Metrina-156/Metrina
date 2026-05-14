@@ -5,9 +5,9 @@ const Marquee = () => {
   const items = ["STRATEGY", "DESIGN", "CODE", "DEPLOY"];
   
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} aria-hidden="true">
       <div className={styles.content}>
-        {[...Array(10)].map((_, i) => (
+        {[...Array(6)].map((_, i) => (
           <div key={i} className={styles.itemWrapper}>
             {items.map((item, j) => (
               <React.Fragment key={j}>

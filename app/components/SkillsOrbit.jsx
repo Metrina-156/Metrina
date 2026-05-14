@@ -1,30 +1,27 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import styles from './SkillsOrbit.module.css';
 
 const SkillsOrbit = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
-  const [particles, setParticles] = useState([]);
 
-  useEffect(() => {
-    const generatedParticles = Array.from({ length: 40 }).map((_, i) => {
+  const particles = useMemo(() => {
+    return Array.from({ length: 25 }).map((_, i) => {
       const angle = Math.random() * Math.PI * 2;
       const radius = 0.6 + Math.random() * 0.6;
-
       return {
         id: i,
-        tx: (Math.random() - 0.5) * 150,
-        ty: (Math.random() - 0.5) * 150,
-        tz: (Math.random() - 0.5) * 800,
-        dur: Math.random() * 15 + 10,
+        tx: (Math.random() - 0.5) * 120,
+        ty: (Math.random() - 0.5) * 120,
+        tz: (Math.random() - 0.5) * 400,
+        dur: Math.random() * 10 + 8,
         delay: Math.random() * -20,
         top: 50 + Math.sin(angle) * (50 * radius),
         left: 50 + Math.cos(angle) * (50 * radius),
-        size: Math.random() * 3 + 1,
+        size: Math.random() * 2 + 1,
       };
     });
-    setParticles(generatedParticles);
   }, []);
 
   const primarySkills = [
@@ -41,13 +38,12 @@ const SkillsOrbit = () => {
   ];
 
   return (
-    <section className={`inverted ${styles.section} section-padding`}>
+    <section className={`inverted ${styles.section} section-padding`} aria-labelledby="skills-title">
       <div className="container">
-        <h2 className={`serif ${styles.title}`}>Core Arsenal</h2>
+        <h2 id="skills-title" className={`serif ${styles.title}`}>Core Arsenal</h2>
 
         <div className={styles.orbitContainer}>
-          {/* 3D Particles Background */}
-          <div className={styles.particlesContainer}>
+          <div className={styles.particlesContainer} aria-hidden="true">
             {particles.map((p) => (
               <div
                 key={`particle-${p.id}`}
@@ -67,41 +63,39 @@ const SkillsOrbit = () => {
             ))}
           </div>
 
-          {/* Central Tooltip */}
-          <div className={styles.tooltip} style={{ opacity: hoveredSkill ? 1 : 0 }}>
-            <span className={styles.tooltipText}>{hoveredSkill}</span>
+          <div className={styles.tooltip} aria-live="polite">
+            <span className={styles.tooltipText}>{hoveredSkill || ""}</span>
           </div>
 
           <div className={styles.orbitRing}>
-            {/* The Ring Visual */}
             <div className={styles.ringVisual}></div>
 
-            {primarySkills.map((skill, i) => {
-              return (
-                <div
-                  key={i}
-                  className={styles.orbitItem}
-                  onMouseEnter={() => setHoveredSkill(skill.name)}
-                  onMouseLeave={() => setHoveredSkill(null)}
-                  style={{
-                    '--anim-delay': `-${(i * 20) / primarySkills.length}s`
-                  }}
-                >
-                  <div className={styles.skillIcon}>
-                    {skill.icon}
-                  </div>
+            {primarySkills.map((skill, i) => (
+              <button
+                key={i}
+                className={`${styles.orbitItem} interactive`}
+                onMouseEnter={() => setHoveredSkill(skill.name)}
+                onMouseLeave={() => setHoveredSkill(null)}
+                onFocus={() => setHoveredSkill(skill.name)}
+                onBlur={() => setHoveredSkill(null)}
+                aria-label={skill.name}
+                style={{
+                  '--anim-delay': `-${(i * 20) / primarySkills.length}s`
+                }}
+              >
+                <div className={styles.skillIcon} aria-hidden="true">
+                  {skill.icon}
                 </div>
-              );
-            })}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Horizontal Chip Scroll */}
         <div className={styles.secondarySkills}>
           {secondarySkills.map((skill, i) => (
-            <div key={i} className={styles.secondarySkill}>
+            <span key={i} className={styles.secondarySkill}>
               {skill}
-            </div>
+            </span>
           ))}
         </div>
       </div>
