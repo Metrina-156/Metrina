@@ -1,53 +1,47 @@
 .section {
-  background-color: #F5F5F0;
+  background-color: var(--bg-muted);
 }
 
 .header {
+  text-align: center;
   margin-bottom: 8vh;
 }
 
 .title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-size: clamp(2.5rem, 5vw, 4rem);
   margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
 }
 
 .subtitle {
-  font-size: 1.15rem;
-  opacity: 0.7;
+  font-size: 1.1rem;
+  opacity: 0.6;
   max-width: 500px;
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  margin: 0 auto;
 }
 
 .pricingGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2.5vw;
-  align-items: stretch; /* Ensures equal heights */
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .card {
   background-color: var(--bg-color);
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 4rem 3rem; /* Increased padding for better breathing room */
+  padding: 3.5rem 2.5rem;
+  border: 1px solid rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
   position: relative;
-  transition: all 0.4s var(--transition-smooth);
+  transition: all 0.6s var(--transition-smooth);
 }
 
-.card:hover {
-  border-color: rgba(0, 128, 128, 0.3);
-  transform: translateY(-5px);
-}
-
-.popular {
-  border: 2px solid #008080;
-  background-color: rgba(0, 128, 128, 0.01);
-  z-index: 2;
-  /* Removed scale to maintain perfect grid alignment */
+.card.popular {
+  border-color: var(--accent-color);
+  background-color: var(--bg-color);
+  box-shadow: 0 30px 60px rgba(92, 69, 255, 0.08);
+  transform: scale(1.02);
+  z-index: 1;
 }
 
 .badge {
@@ -55,120 +49,135 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #008080;
+  background-color: var(--accent-color);
   color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 100px;
   font-size: 0.65rem;
   font-weight: 800;
-  padding: 0.6rem 1.4rem;
-  border-radius: 100px;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.15em;
   white-space: nowrap;
 }
 
 .cardHeader {
-  margin-bottom: 3.5rem;
-  min-height: 180px; /* Ensures consistent alignment of price/desc */
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 3rem;
 }
 
 .tierName {
-  display: block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.25em;
-  margin-bottom: 1.5rem;
   opacity: 0.4;
+  display: block;
+  margin-bottom: 1.5rem;
 }
 
 .priceContainer {
-  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .priceSuffix {
   font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  opacity: 0.4;
-  margin-bottom: 0.2rem;
+  font-weight: 700;
+  opacity: 0.6;
 }
 
 .price {
   font-family: var(--font-heading);
-  font-size: clamp(1.8rem, 2.8vw, 2.5rem);
+  font-size: 3.5rem;
+  line-height: 1;
   color: var(--text-color);
-  line-height: 1.1;
+}
+
+.popular .price {
+  color: var(--accent-color);
 }
 
 .bestFor {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.6;
-  opacity: 0.8;
-  flex-grow: 1;
+  opacity: 0.6;
 }
 
 .featureList {
   list-style: none;
-  padding: 0;
-  margin: 0 0 4rem 0;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
+  margin-bottom: 4rem;
   flex-grow: 1;
 }
 
 .featureItem {
   display: flex;
   gap: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  opacity: 0.7;
+  font-size: 0.9rem;
+  align-items: flex-start;
 }
 
 .checkWrapper {
-  margin-top: 0.2rem;
-  color: #008080;
+  width: 18px;
+  height: 18px;
+  background-color: var(--bg-soft);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.popular .checkWrapper {
+  background-color: var(--accent-soft);
+  color: var(--accent-color);
 }
 
 .cta {
-  display: block;
   width: 100%;
+  padding: 1.2rem;
   text-align: center;
-  padding: 1.25rem;
-  background-color: var(--text-color);
-  color: var(--bg-color);
-  font-size: 0.8rem;
+  border: 1px solid rgba(0,0,0,0.1);
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  transition: all 0.3s var(--transition-smooth);
+  letter-spacing: 0.2em;
+  transition: all 0.4s var(--transition-smooth);
 }
 
 .popular .cta {
-  background-color: #008080;
+  background-color: var(--accent-color);
+  color: white;
+  border-color: var(--accent-color);
 }
 
 .cta:hover {
-  background-color: var(--accent-color);
+  background-color: var(--text-color);
   color: white;
-}
-
-@media (max-width: 1200px) {
-  .card {
-    padding: 3rem 2rem;
-  }
+  border-color: var(--text-color);
+  transform: translateY(-5px);
 }
 
 @media (max-width: 1024px) {
   .pricingGrid {
-    grid-template-columns: 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem 2rem;
   }
-  .cardHeader {
-    min-height: auto;
+  .card.popular {
+    grid-column: span 2;
+    transform: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .pricingGrid {
+    grid-template-columns: 1fr;
+  }
+  .card.popular {
+    grid-column: span 1;
+  }
+  .card {
+    padding: 2.5rem 2rem;
   }
 }
