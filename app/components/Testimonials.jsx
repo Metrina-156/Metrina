@@ -3,13 +3,13 @@
 import React, { useState, useEffect } from 'react';
 import styles from './Testimonials.module.css';
 
-const Testimonials = () => {
-  const quotes = [
-    { text: "The architectural approach to the front-end was exactly what our brand needed. Alex is a true digital artisan.", author: "SOPHIA CHEN, CEO AT LUMINA" },
-    { text: "Beyond just code, Alex understands the spatial relationship between design and user experience.", author: "MARCUS VANCE, CREATIVE DIRECTOR" },
-    { text: "Technical mastery delivered with incredible precision. The performance gains were immediate.", author: "ELENA ROSSI, FOUNDER OF VORTEX" }
-  ];
+const quotes = [
+  { text: "The architectural approach to the front-end was exactly what our brand needed. Alex is a true digital artisan.", author: "SOPHIA CHEN, CEO AT LUMINA" },
+  { text: "Beyond just code, Alex understands the spatial relationship between design and user experience.", author: "MARCUS VANCE, CREATIVE DIRECTOR" },
+  { text: "Technical mastery delivered with incredible precision. The performance gains were immediate.", author: "ELENA ROSSI, FOUNDER OF VORTEX" }
+];
 
+const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Testimonials = () => {
       <div className={`${styles.container} container`}>
         <div className={styles.content}>
           <p className={`${styles.quote} serif`}>
-            "{quotes[currentIndex].text}"
+            &quot;{quotes[currentIndex].text}&quot;
           </p>
           <span className={styles.author}>
             {quotes[currentIndex].author}

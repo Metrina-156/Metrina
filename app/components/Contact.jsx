@@ -11,7 +11,7 @@ const Contact = () => {
         </div>
 
         <h2 className={`${styles.title} serif`}>
-          Let's build something.
+          Let&apos;s build something.
         </h2>
 
         <a href="mailto:hello@metrina.dev" className={`${styles.email} interactive`}>
