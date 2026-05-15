@@ -36,12 +36,22 @@
   transition: all 0.6s var(--transition-smooth);
 }
 
+.card:hover {
+  border-color: #008080;
+  transform: translateY(-12px);
+  box-shadow: 0 20px 40px rgba(0, 128, 128, 0.05);
+}
+
 .card.popular {
-  border-color: var(--accent-color);
+  border-color: #008080;
   background-color: var(--bg-color);
-  box-shadow: 0 30px 60px rgba(92, 69, 255, 0.08);
+  box-shadow: 0 30px 60px rgba(0, 128, 128, 0.08);
   transform: scale(1.02);
   z-index: 1;
+}
+
+.card.popular:hover {
+  transform: scale(1.02) translateY(-12px);
 }
 
 .badge {
