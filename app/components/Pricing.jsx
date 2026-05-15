@@ -13,16 +13,16 @@ const Pricing = () => {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     cardsRef.current.forEach((card, index) => {
       if (!card) return;
-      
-      gsap.fromTo(card, 
+
+      gsap.fromTo(card,
         { y: 40, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1.2, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1.2,
           ease: 'expo.out',
           scrollTrigger: {
             trigger: card,
@@ -55,7 +55,7 @@ const Pricing = () => {
     },
     {
       name: "GROWTH",
-      price: "₹25,000",
+      price: "₹40,000",
       priceSuffix: "Starting at",
       isPopular: true,
       bestFor: "Growing brands that need more pages, content control, and search visibility.",
@@ -111,13 +111,13 @@ const Pricing = () => {
 
         <div className={styles.pricingGrid}>
           {tiers.map((tier, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className={`${styles.card} ${tier.isPopular ? styles.popular : ''}`}
               ref={el => cardsRef.current[i] = el}
             >
               {tier.isPopular && <div className={styles.badge}>MOST POPULAR</div>}
-              
+
               <div className={styles.cardHeader}>
                 <span className={styles.tierName}>{tier.name}</span>
                 <div className={styles.priceContainer}>
@@ -126,7 +126,7 @@ const Pricing = () => {
                 </div>
                 <p className={styles.bestFor}>{tier.bestFor}</p>
               </div>
-              
+
               <ul className={styles.featureList}>
                 {tier.includes.map((feature, idx) => (
                   <li key={idx} className={styles.featureItem}>
@@ -138,8 +138,8 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <a 
-                href={tier.link} 
+              <a
+                href={tier.link}
                 className={`${styles.cta} interactive`}
                 onClick={(e) => handleScroll(e, tier.link)}
               >

@@ -6,13 +6,15 @@
   position: relative;
   overflow: hidden;
   background-color: var(--bg-color);
-  padding-top: 120px; /* Safe area for fixed header */
+  padding-top: 120px;
+  /* Safe area for fixed header */
 }
 
 .backgroundDesign {
   position: absolute;
   inset: 0;
-  z-index: 1; /* Above hero background, below container */
+  z-index: 1;
+  /* Above hero background, below container */
   pointer-events: none;
 }
 
@@ -26,7 +28,8 @@
   /* Mask to fade left and right edges */
   mask-image: linear-gradient(to right, transparent, black 30%, black 70%, transparent 100%);
   filter: grayscale(1) contrast(1.1) brightness(1.05);
-  opacity: 0.12; /* Reduced from 0.15 for smoother blend */
+  opacity: 0.12;
+  /* Reduced from 0.15 for smoother blend */
 }
 
 .bgImg {
@@ -46,7 +49,8 @@
 
 @media (max-width: 768px) {
   .heroBackground {
-    display: none; /* Hide on mobile to keep focus on text */
+    display: none;
+    /* Hide on mobile to keep focus on text */
   }
 }
 
@@ -119,7 +123,7 @@
 }
 
 .cta {
-  padding: 1.6rem 5rem;
+  padding: 1.4rem 1.5rem;
   background: #008080;
   color: white;
   text-transform: uppercase;
@@ -127,7 +131,7 @@
   font-size: 0.8rem;
   font-weight: 700;
   transition: all 0.6s var(--transition-smooth);
-  border-radius: 2px;
+  border-radius: 30px;
   position: relative;
   overflow: hidden;
 }
@@ -165,18 +169,27 @@
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(12px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(12px);
+  }
 }
 
 @media (max-width: 768px) {
   .title {
     font-size: clamp(2.5rem, 12vw, 4.5rem);
   }
+
   .cta {
     width: 100%;
     padding: 1.4rem 2rem;
   }
+
   .subtitle {
     font-size: 1.1rem;
   }
