@@ -6,11 +6,11 @@ import Image from 'next/image';
 import styles from './Hero.module.css';
 
 const Hero = () => {
-  const scrollToWork = () => {
+  const scrollToPricing = () => {
     if (window.lenis) {
-      window.lenis.scrollTo('#work');
+      window.lenis.scrollTo('#pricing');
     } else {
-      const el = document.getElementById('work');
+      const el = document.getElementById('pricing');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -66,10 +66,10 @@ const Hero = () => {
 
           <button
             className={`${styles.cta} interactive`}
-            onClick={scrollToWork}
-            aria-label="View my work"
+            onClick={scrollToPricing}
+            aria-label="View pricing"
           >
-            View Work
+            View Pricing
           </button>
         </div>
       </div>

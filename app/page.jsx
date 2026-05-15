@@ -3,6 +3,8 @@ import Marquee from './components/Marquee';
 import About from './components/About';
 import SkillsOrbit from './components/SkillsOrbit';
 import Work from './components/Work';
+import HowWeWork from './components/HowWeWork';
+import Pricing from './components/Pricing';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 
@@ -20,6 +22,8 @@ export default function Home() {
       <section id="work">
         <Work />
       </section>
+      <HowWeWork />
+      <Pricing />
       <Testimonials />
       <section id="contact">
         <Contact />
