@@ -121,12 +121,13 @@
 }
 
 .projectVisual {
-  height: 500px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
   border-radius: 4px;
   position: relative;
   overflow: hidden;
   margin-bottom: 4rem;
-  background-color: #eee;
+  background-color: rgba(0,0,0,0.03);
 }
 
 .projectImage {
@@ -148,7 +149,8 @@
     gap: 2rem;
   }
   .projectVisual {
-    height: 300px !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
     order: -1;
     margin-bottom: 1.5rem;
   }

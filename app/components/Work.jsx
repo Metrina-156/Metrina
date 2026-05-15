@@ -7,9 +7,9 @@ import styles from './Work.module.css';
 
 const Work = () => {
   const projects = [
-    { id: 1, title: "Lumina Studio", year: "2024", tag: "E-Commerce", desc: "A high-performance digital storefront for a boutique lighting brand. Built with Next.js and Three.js.", img: "https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&w=1000&auto=format&fit=crop" },
-    { id: 2, title: "Aether OS", year: "2023", tag: "System Design", desc: "A conceptual operating system interface focused on spatial computing and minimalism.", img: "https://images.unsplash.com/photo-1614332287897-cdc485fa562d?q=80&w=1000&auto=format&fit=crop" },
-    { id: 3, title: "Vortex Labs", year: "2023", tag: "Web3", desc: "Data visualization platform for real-time blockchain analytics and node monitoring.", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1000&auto=format&fit=crop" }
+    { id: 1, title: "Ethelia Biologics", year: "2026", tag: "Brand Showcase", desc: "A bespoke digital identity built for a biotech startup redefining how medicine understands the individual.", img: "https://res.cloudinary.com/dlauksjfq/image/upload/v1778866507/Screenshot_2026-05-15_223118_vj0enw.png", link: "https://ethelia-biologics.onrender.com/" },
+    { id: 2, title: "Pharmacogenics", year: "2026", tag: "B2B Saas", desc: "A pharmacogenomics research tool that lets you search and explore gene variants — showing genomic metadata, population frequency data, and drug interaction profiles to understand how specific genetic variations affect individual drug response.", img: "https://res.cloudinary.com/dlauksjfq/image/upload/v1778867279/Screenshot_134_xr8me9.png", link: "https://pharmacogenics.onrender.com/" },
+    { id: 3, title: "Vortex Labs", year: "2023", tag: "Web3", desc: "Data visualization platform for real-time blockchain analytics and node monitoring.", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=1000&auto=format&fit=crop", link: "#" }
   ];
 
   const [activeIndex, setActiveIndex] = useState(null);
@@ -17,7 +17,7 @@ const Work = () => {
   const handleInteraction = (index, entering) => {
     if (window.innerWidth <= 768) return;
     setActiveIndex(entering ? index : null);
-    
+
     gsap.to(`.project-content-${index}`, {
       height: entering ? 'auto' : 0,
       opacity: entering ? 1 : 0,
@@ -74,17 +74,17 @@ const Work = () => {
               >
                 <div className={styles.projectInfo}>
                   <p className={styles.projectDesc}>{project.desc}</p>
-                  <a href="#" className={`${styles.exploreLink} interactive`}>
+                  <a href={`${project.link}`} className={`${styles.exploreLink} interactive`}>
                     EXPLORE PROJECT
                     <span className={styles.arrow}>→</span>
                   </a>
                 </div>
                 <div className={styles.projectVisual}>
-                  <Image 
-                    src={project.img} 
-                    alt={`Preview of ${project.title}`} 
-                    fill 
-                    style={{ objectFit: 'cover' }}
+                  <Image
+                    src={project.img}
+                    alt={`Preview of ${project.title}`}
+                    fill
+                    style={{ objectFit: 'contain' }}
                     className={styles.projectImage}
                   />
                 </div>
