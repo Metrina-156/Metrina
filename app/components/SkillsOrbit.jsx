@@ -5,23 +5,25 @@ import styles from './SkillsOrbit.module.css';
 
 const SkillsOrbit = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [particles, setParticles] = useState([]);
 
-  const particles = useMemo(() => {
-    return Array.from({ length: 25 }).map((_, i) => {
+  useEffect(() => {
+    const generatedParticles = Array.from({ length: 60 }).map((_, i) => {
       const angle = Math.random() * Math.PI * 2;
-      const radius = 0.6 + Math.random() * 0.6;
+      const radius = 0.6 + Math.random() * 0.8;
       return {
         id: i,
-        tx: (Math.random() - 0.5) * 120,
-        ty: (Math.random() - 0.5) * 120,
-        tz: (Math.random() - 0.5) * 400,
-        dur: Math.random() * 10 + 8,
+        tx: (Math.random() - 0.5) * 150,
+        ty: (Math.random() - 0.5) * 150,
+        tz: (Math.random() - 0.5) * 500,
+        dur: Math.random() * 10 + 10,
         delay: Math.random() * -20,
         top: 50 + Math.sin(angle) * (50 * radius),
         left: 50 + Math.cos(angle) * (50 * radius),
-        size: Math.random() * 2 + 1,
+        size: Math.random() * 3 + 1,
       };
     });
+    setParticles(generatedParticles);
   }, []);
 
   const primarySkills = [
@@ -83,9 +85,9 @@ const SkillsOrbit = () => {
                   '--anim-delay': `-${(i * 20) / primarySkills.length}s`
                 }}
               >
-                <div className={styles.skillIcon} aria-hidden="true">
+                <span className={styles.skillIcon} aria-hidden="true">
                   {skill.icon}
-                </div>
+                </span>
               </button>
             ))}
           </div>

@@ -39,11 +39,20 @@ const Work = () => {
               onMouseEnter={() => handleInteraction(i, true)}
               onMouseLeave={() => handleInteraction(i, false)}
             >
-              <button
+              <div
                 className={styles.projectHeader}
+                role="button"
+                tabIndex={0}
                 onClick={() => {
                   if (window.innerWidth <= 768) return;
                   handleInteraction(i, activeIndex !== i);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (window.innerWidth <= 768) return;
+                    handleInteraction(i, activeIndex !== i);
+                  }
                 }}
                 aria-expanded={activeIndex === i}
                 aria-controls={`project-content-${i}`}
@@ -56,7 +65,7 @@ const Work = () => {
                   <span>{project.tag}</span>
                   <span>{project.year}</span>
                 </div>
-              </button>
+              </div>
 
               <div
                 id={`project-content-${i}`}

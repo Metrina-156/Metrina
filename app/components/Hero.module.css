@@ -9,11 +9,72 @@
   padding-top: 120px; /* Safe area for fixed header */
 }
 
+.backgroundDesign {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.textureLayer {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  mask-image: radial-gradient(circle at center, black, transparent 95%);
+}
+
+.wireframeContainer {
+  position: absolute;
+  right: -5%;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 90vh;
+  height: 90vh;
+  opacity: 1;
+  animation: rotateWireframe 80s linear infinite;
+}
+
+.auraPrimary {
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  width: 45vw;
+  height: 45vw;
+  background: radial-gradient(circle, rgba(92, 69, 255, 0.12) 0%, transparent 70%);
+  filter: blur(80px);
+  animation: floatAura1 20s ease-in-out infinite alternate;
+}
+
+.auraSecondary {
+  position: absolute;
+  bottom: 10%;
+  left: -5%;
+  width: 35vw;
+  height: 35vw;
+  background: radial-gradient(circle, rgba(92, 69, 255, 0.06) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: floatAura2 25s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatAura1 {
+  from { transform: translate(0, 0); }
+  to { transform: translate(-8vw, 10vh); }
+}
+
+@keyframes floatAura2 {
+  from { transform: translate(0, 0); }
+  to { transform: translate(10vw, -8vh); }
+}
+
+@keyframes rotateWireframe {
+  from { transform: translateY(-50%) rotate(0deg); }
+  to { transform: translateY(-50%) rotate(360deg); }
+}
+
 .overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(92, 69, 255, 0.05) 0%, transparent 70%),
-              linear-gradient(to bottom, transparent, rgba(248, 246, 241, 0.4));
+  background: linear-gradient(to bottom, transparent, rgba(248, 246, 241, 0.6));
   z-index: 1;
 }
 
@@ -60,8 +121,8 @@
 .cta {
   margin-top: 5rem;
   padding: 1.4rem 4rem;
-  background: var(--text-color);
-  color: var(--bg-color);
+  background: var(--accent-color);
+  color: white;
   text-transform: uppercase;
   letter-spacing: 0.25em;
   font-size: 0.85rem;
@@ -73,9 +134,9 @@
 }
 
 .cta:hover {
-  background-color: var(--accent-color);
+  background-color: var(--text-color);
   transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(92, 69, 255, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 .scrollIndicator {

@@ -36,16 +36,16 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
 
+  const [isLogoHovered, setIsLogoHovered] = useState(false);
+
   const navTheme = isScrolled ? {
     bg: 'rgba(15, 15, 15, 0.9)',
     text: 'var(--dark-text)',
     border: 'rgba(255,255,255,0.05)',
-    logoColor: 'var(--accent-color)'
   } : {
     bg: 'transparent',
     text: 'var(--text-color)',
     border: 'transparent',
-    logoColor: 'var(--text-color)'
   };
 
   return (
@@ -73,6 +73,8 @@ const Navigation = () => {
             className="interactive"
             aria-label="Go to home"
             onClick={() => scrollToSection(null)}
+            onMouseEnter={() => setIsLogoHovered(true)}
+            onMouseLeave={() => setIsLogoHovered(false)}
             style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}
           >
             <Image 
@@ -90,7 +92,7 @@ const Navigation = () => {
                 fontWeight: '800',
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: navTheme.logoColor,
+                color: isScrolled ? 'var(--dark-text)' : (isLogoHovered ? 'var(--text-color)' : '#008080'),
                 lineHeight: 1,
                 transition: 'color 0.4s var(--transition-smooth)'
               }}
