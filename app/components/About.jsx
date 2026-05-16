@@ -49,7 +49,6 @@ const About = () => {
           <div className={styles.stats}>
             <div className={styles.statPill}>
               revolutionized designs
-
             </div>
             <div className={styles.statPill}>
               providing 24/7 support

@@ -159,3 +159,20 @@
     font-size: 1.4rem;
   }
 }
+
+@media (max-width: 480px) {
+  .orbitContainer {
+    height: 350px;
+  }
+  .ringVisual {
+    width: 240px;
+    height: 240px;
+  }
+  @keyframes orbitRotate {
+    0% { transform: rotateZ(0deg) translateX(120px) rotateZ(0deg); }
+    100% { transform: rotateZ(360deg) translateX(120px) rotateZ(-360deg); }
+  }
+  .tooltipText {
+    font-size: 1.5rem;
+  }
+}

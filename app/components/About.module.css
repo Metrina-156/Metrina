@@ -80,3 +80,40 @@
     text-align: center;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    gap: 4rem;
+  }
+
+  .philosophy {
+    font-size: 1.35rem;
+    margin-bottom: 3rem;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+
+  .statPill {
+    width: 100%;
+    max-width: 320px;
+    padding: 0.8rem 1rem;
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .philosophy {
+    font-size: 1.2rem;
+  }
+  
+  .statPill {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+  }
+}
