@@ -41,16 +41,23 @@
 
 @media (max-width: 1024px) {
   .heroBackground {
-    width: 80vw;
-    right: -10%;
+    width: 120vw;
+    right: -20%;
     opacity: 0.08;
+    top: 10%;
+    height: 80%;
   }
 }
 
 @media (max-width: 768px) {
   .heroBackground {
-    display: none;
-    /* Hide on mobile to keep focus on text */
+    display: block;
+    width: 180vw;
+    right: -40%;
+    opacity: 0.06;
+    top: 15%;
+    filter: grayscale(1) contrast(1.2) brightness(1.1);
+    mask-image: radial-gradient(circle at center, black 20%, transparent 80%);
   }
 }
 
