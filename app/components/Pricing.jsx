@@ -18,18 +18,18 @@ const Pricing = () => {
       if (!card) return;
 
       gsap.fromTo(card,
-        { y: 40, opacity: 0 },
+        { y: 30, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 1.2,
-          ease: 'expo.out',
+          duration: 1,
+          ease: 'power2.out',
           scrollTrigger: {
             trigger: card,
-            start: 'top 85%',
+            start: 'top 95%',
             toggleActions: 'play none none none'
           },
-          delay: index * 0.15
+          delay: index * 0.1
         }
       );
     });

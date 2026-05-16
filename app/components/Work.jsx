@@ -84,7 +84,7 @@ const Work = () => {
                     src={project.img}
                     alt={`Preview of ${project.title}`}
                     fill
-                    style={{ objectFit: 'contain' }}
+                    style={{ objectFit: 'cover', objectPosition: 'left' }}
                     className={styles.projectImage}
                   />
                 </div>

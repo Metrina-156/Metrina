@@ -126,7 +126,6 @@
   border-radius: 4px;
   position: relative;
   overflow: hidden;
-  margin-bottom: 4rem;
   background-color: rgba(0,0,0,0.03);
 }
 
@@ -147,15 +146,15 @@
     opacity: 1 !important;
     grid-template-columns: 1fr !important;
     gap: 2rem;
+    padding-bottom: 3rem;
   }
   .projectVisual {
     aspect-ratio: 16 / 9 !important;
     height: auto !important;
     order: -1;
-    margin-bottom: 1.5rem;
   }
   .projectInfo {
-    padding-bottom: 3rem;
+    padding-bottom: 0;
   }
   .projectMeta {
     display: none !important;

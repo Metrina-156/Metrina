@@ -85,7 +85,7 @@ const SkillsOrbit = () => {
                   '--anim-delay': `-${(i * 20) / primarySkills.length}s`
                 }}
               >
-                <span className={styles.skillIcon} aria-hidden="true">
+                <span className={`${styles.skillIcon} ${skill.name === 'TypeScript' ? styles.tsIcon : ''}`} aria-hidden="true">
                   {skill.icon}
                 </span>
               </button>

@@ -99,8 +99,15 @@
   align-items: center;
   justify-content: center;
   font-size: 1.8rem;
+  color: var(--dark-text);
   transition: all 0.3s var(--transition-smooth);
   transform: rotateX(-75deg);
+}
+
+.tsIcon {
+  color: #3178C6; /* TypeScript Brand Blue */
+  font-size: 1.1rem;
+  font-weight: 800;
 }
 
 .orbitItem:hover .skillIcon,
