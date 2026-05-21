@@ -33,7 +33,7 @@ const Hero = () => {
       .fromTo(ctaRef.current, { y: 20, opacity: 0 }, { y: 0, opacity: 1 }, "-=1.2")
       .fromTo(bgImgRef.current, { scale: 1.1, opacity: 0 }, { scale: 1, opacity: 0.15, duration: 2.5 }, "-=2.2")
       .fromTo(waveRef.current, { opacity: 0, scaleY: 0.5 }, { opacity: 0.6, scaleY: 1, duration: 2 }, "-=1.5");
-    
+
     // Subtle parallax effect on mouse move
     const handleMouseMove = (e) => {
       const { clientX, clientY } = e;
@@ -46,7 +46,7 @@ const Hero = () => {
     };
 
     window.addEventListener('mousemove', handleMouseMove);
-    
+
     // Subtle float for the wave
     gsap.to(waveRef.current, {
       y: 15,
@@ -60,13 +60,13 @@ const Hero = () => {
   }, { scope: container });
 
   return (
-    <section ref={container} className={styles.hero} aria-labelledby="hero-title">
+    <section ref={container} className={`${styles.hero} `} aria-labelledby="hero-title">
       <div className={styles.backgroundDesign}>
         {/* Large Editorial Background Imagery */}
         <div ref={bgImgRef} className={styles.heroBackground}>
-          <Image 
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop" 
-            alt="High-contrast architectural skyscraper facade" 
+          <Image
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2000&auto=format&fit=crop"
+            alt="High-contrast architectural skyscraper facade"
             fill
             priority
             className={styles.bgImg}
@@ -76,14 +76,14 @@ const Hero = () => {
         {/* Minimalist Wave Background */}
         <div ref={waveRef} className={styles.waveContainer}>
           <svg viewBox="0 0 1440 320" preserveAspectRatio="none" className={styles.waveSvg}>
-            <path 
-              fill="#008080" 
-              fillOpacity="0.03" 
+            <path
+              fill="#008080"
+              fillOpacity="0.03"
               d="M0,192L48,197.3C96,203,192,213,288,192C384,171,480,117,576,112C672,107,768,149,864,165.3C960,181,1056,171,1152,149.3C1248,128,1344,96,1392,80L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
             ></path>
-            <path 
-              fill="#008080" 
-              fillOpacity="0.05" 
+            <path
+              fill="#008080"
+              fillOpacity="0.05"
               d="M0,256L48,229.3C96,203,192,149,288,154.7C384,160,480,224,576,218.7C672,213,768,139,864,128C960,117,1056,171,1152,197.3C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
             ></path>
           </svg>

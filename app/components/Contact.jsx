@@ -14,15 +14,14 @@ const Contact = () => {
           Let&apos;s build something.
         </h2>
 
-        <a href="mailto:hello@metrina.dev" className={`${styles.email} interactive`}>
-          hello@metrina.dev
+        <a href="mailto:hello@metrina.tech" className={`${styles.email} interactive`}>
+          hello@metrina.tech
         </a>
 
         <div className={styles.socials}>
-          <a href="#" className="interactive">LINKEDIN</a>
-          <a href="#" className="interactive">GITHUB</a>
-          <a href="#" className="interactive">X / TWITTER</a>
-          <a href="#" className="interactive">DRIBBBLE</a>
+          <a href="https://www.linkedin.com/company/metrina-tech/" className="interactive">LINKEDIN</a>
+          <a href="https://x.com/metrina_tech" className="interactive">X / TWITTER</a>
+          <a href="https://www.instagram.com/metrina.devs" className="interactive">INSTAGRAM</a>
         </div>
       </div>
     </section>

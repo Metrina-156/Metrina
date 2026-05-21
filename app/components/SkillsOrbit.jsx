@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import styles from './SkillsOrbit.module.css';
+import { ReactIcon, ThreeIcon, GSAPIcon, NodeIcon, TSIcon, CSSIcon } from './SkillIcons';
 
 const SkillsOrbit = () => {
   const [hoveredSkill, setHoveredSkill] = useState(null);
@@ -27,12 +28,13 @@ const SkillsOrbit = () => {
   }, []);
 
   const primarySkills = [
-    { name: "React", icon: "⚛️" },
-    { name: "Three.js", icon: "🧊" },
-    { name: "GSAP", icon: "🪄" },
-    { name: "Node.js", icon: "🟢" },
-    { name: "TypeScript", icon: "TS" },
-    { name: "CSS 3D", icon: "📐" }
+    { name: "React", icon: <ReactIcon /> },
+    { name: "Node.js", icon: <NodeIcon /> },
+    { name: "CSS 3D", icon: <CSSIcon /> },
+    { name: "Three.js", icon: <ThreeIcon /> },
+    { name: "TypeScript", icon: <TSIcon /> },
+    { name: "GSAP", icon: <GSAPIcon /> }
+
   ];
 
   const secondarySkills = [

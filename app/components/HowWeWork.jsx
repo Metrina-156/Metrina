@@ -12,16 +12,16 @@ const HowWeWork = () => {
 
   useGSAP(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     itemsRef.current.forEach((item, index) => {
       if (!item) return;
-      
-      gsap.fromTo(item, 
+
+      gsap.fromTo(item,
         { y: 30, opacity: 0 },
-        { 
-          y: 0, 
-          opacity: 1, 
-          duration: 1, 
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
           ease: 'expo.out',
           scrollTrigger: {
             trigger: item,
@@ -61,11 +61,11 @@ const HowWeWork = () => {
     <section ref={containerRef} className={`${styles.section} section-padding`} aria-labelledby="how-we-work-title">
       <div className="container">
         <h2 id="how-we-work-title" className={`serif ${styles.title}`}>How We Work</h2>
-        
+
         <div className={styles.stepsGrid}>
           {steps.map((step, i) => (
-            <div 
-              key={i} 
+            <div
+              key={i}
               className={styles.stepItem}
               ref={el => itemsRef.current[i] = el}
             >
