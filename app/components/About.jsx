@@ -43,7 +43,7 @@ const About = () => {
           <p className={`${styles.philosophy} serif`}>
             Metrina is a group of young and enthusiastic engineers developing real world application.
             <br /><br />
-            We are here to build an fully customized website to satisy your needs and to boost your brands reach.
+            We are here to build an fully customized website to satisfy your needs and to boost your brands reach.
           </p>
 
           <div className={styles.stats}>
