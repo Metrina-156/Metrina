@@ -61,12 +61,12 @@ const containerVariants = {
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { 
-      duration: 0.8, 
-      ease: [0.76, 0, 0.24, 1] 
+    transition: {
+      duration: 0.8,
+      ease: [0.76, 0, 0.24, 1]
     }
   }
 };
@@ -75,10 +75,10 @@ const StarRating = ({ rating }) => {
   return (
     <div className={styles.stars}>
       {[...Array(5)].map((_, i) => (
-        <Star 
-          key={i} 
-          size={14} 
-          fill={i < rating ? "currentColor" : "none"} 
+        <Star
+          key={i}
+          size={14}
+          fill={i < rating ? "currentColor" : "none"}
           className={i < rating ? styles.starFilled : styles.starEmpty}
         />
       ))}
@@ -90,7 +90,7 @@ const Testimonials = () => {
   return (
     <section className={`${styles.section} section-padding`} aria-labelledby="reviews-title">
       <div className={`${styles.container} container`}>
-        <motion.div 
+        <motion.div
           className={styles.header}
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -98,11 +98,11 @@ const Testimonials = () => {
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
           <span className={styles.label}>Success Stories</span>
-          <h2 id="reviews-title" className={`serif ${styles.title}`}>Digital <br /> Craftsmanship.</h2>
+          <h2 id="reviews-title" className={`serif ${styles.title}`}>What Our User Says?...</h2>
           <div className={styles.headerLine} />
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className={styles.grid}
           variants={containerVariants}
           initial="hidden"
@@ -110,15 +110,15 @@ const Testimonials = () => {
           viewport={{ once: true, margin: "-100px" }}
         >
           {reviews.map((review, i) => (
-            <motion.div 
-              key={i} 
+            <motion.div
+              key={i}
               className={styles.card}
               variants={itemVariants}
             >
               <div className={styles.cardHeader}>
                 <div className={styles.authorSection}>
-                  <div 
-                    className={styles.avatar} 
+                  <div
+                    className={styles.avatar}
                     style={{ backgroundColor: review.color }}
                   >
                     {review.initials}
