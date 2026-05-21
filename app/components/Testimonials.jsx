@@ -98,7 +98,7 @@ const Testimonials = () => {
           transition={{ duration: 1, ease: [0.76, 0, 0.24, 1] }}
         >
           <span className={styles.label}>Success Stories</span>
-          <h2 id="reviews-title" className={`serif ${styles.title}`}>What Our User Says?...</h2>
+          <h2 id="reviews-title" className={`serif ${styles.title}`}>What Our User Says...</h2>
           <div className={styles.headerLine} />
         </motion.div>
 
