@@ -19,14 +19,11 @@ if (!resend) {
  * @param {Object} inquiryData - The raw inquiry details from Mongoose.
  */
 export async function sendInquiryEmails(inquiryData) {
-  const agencyEmailEnv = process.env.AGENCY_EMAIL || 'hello@metrina.dev';
-  // Support comma-separated list of emails
-  const agencyRecipients = agencyEmailEnv.split(',').map(email => email.trim());
-  
-  const clientName = process.env.CLIENT_NAME || 'Metrina';
-  
+  const agencyRecipient = process.env.AGENCY_EMAIL;
+  const clientName = process.env.CLIENT_NAME;
+
   // Use a verified sending domain or Resend sandbox default address
-  const senderEmail = process.env.SENDER_EMAIL || 'onboarding@resend.dev';
+  const senderEmail = process.env.SENDER_EMAIL;
 
   const agencyHtml = getAgencyEmailTemplate(inquiryData);
   const clientHtml = getClientEmailTemplate(inquiryData);
@@ -36,7 +33,7 @@ export async function sendInquiryEmails(inquiryData) {
       // 1. Send Agency Notification
       const agencyResult = await resend.emails.send({
         from: `Metrina Portal <${senderEmail}>`,
-        to: agencyRecipients,
+        to: agencyRecipient,
         subject: `New [${inquiryData.selectedPackage}] Inquiry from ${inquiryData.name}`,
         html: agencyHtml,
       });
@@ -44,7 +41,7 @@ export async function sendInquiryEmails(inquiryData) {
       if (agencyResult.error) {
         console.error('Resend error sending agency email:', agencyResult.error);
       } else {
-        console.log(`Agency email sent successfully to: ${agencyRecipients.join(', ')}. ID: ${agencyResult.data?.id}`);
+        console.log(`Agency email sent successfully. ID: ${agencyResult.data?.id}`);
       }
 
       // 2. Send Client Confirmation
@@ -63,7 +60,7 @@ export async function sendInquiryEmails(inquiryData) {
     } else {
       // Mock mode logging
       console.log('--- [MOCK EMAIL DRY-RUN] ---');
-      console.log(`To Agency (${agencyRecipients.join(', ')}): Subject: New [${inquiryData.selectedPackage}] Inquiry from ${inquiryData.name}`);
+      console.log(`To Agency (${agencyRecipient}): Subject: New [${inquiryData.selectedPackage}] Inquiry from ${inquiryData.name}`);
       console.log(`To Client (${inquiryData.email}): Subject: We've received your inquiry — Metrina`);
       console.log('----------------------------');
     }
