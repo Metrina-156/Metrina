@@ -129,7 +129,7 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const apiEndpoint = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api/inquiry';
+      const apiEndpoint = '/api/inquiry';
       const response = await fetch(apiEndpoint, {
         method: 'POST',
         headers: {
