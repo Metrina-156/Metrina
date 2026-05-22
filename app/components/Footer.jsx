@@ -1,6 +1,15 @@
+'use client';
+
 import React from 'react';
+import { usePathname } from 'next/navigation';
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  if (pathname && pathname.startsWith('/get-started')) {
+    return null;
+  }
+
   return (
     <footer style={{
       padding: '2rem 4vw',

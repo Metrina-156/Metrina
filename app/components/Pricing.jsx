@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Check } from 'lucide-react';
+import Link from 'next/link';
 import styles from './Pricing.module.css';
 
 const Pricing = () => {
@@ -138,13 +139,12 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <a
-                href={tier.link}
+              <Link
+                href={`/get-started?package=${tier.name}`}
                 className={`${styles.cta} interactive`}
-                onClick={(e) => handleScroll(e, tier.link)}
               >
                 {tier.cta}
-              </a>
+              </Link>
             </div>
           ))}
         </div>

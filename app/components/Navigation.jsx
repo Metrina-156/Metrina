@@ -3,8 +3,11 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 const Navigation = () => {
+  const pathname = usePathname();
+  
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -47,6 +50,10 @@ const Navigation = () => {
     text: 'var(--text-color)',
     border: 'transparent',
   };
+
+  if (pathname && pathname.startsWith('/get-started')) {
+    return null;
+  }
 
   return (
     <>

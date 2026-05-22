@@ -1,0 +1,825 @@
+.formCard {
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid #e8e0d4;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.02);
+  transition: all 0.6s var(--transition-smooth);
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .formCard {
+    padding: 2rem 1.5rem;
+  }
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.stepNum {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--text-color);
+  opacity: 0.5;
+  text-transform: uppercase;
+}
+
+.stepText {
+  color: var(--accent-color);
+  font-weight: 800;
+  opacity: 1;
+}
+
+.progressTrack {
+  height: 2px;
+  background-color: rgba(232, 224, 212, 0.5); /* #e8e0d4 with opacity */
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 3.5rem;
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: var(--accent-color);
+  transition: width 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.stepTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  color: var(--text-color);
+  text-align: center;
+  margin-bottom: 2.5rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Step 1: Package Grid */
+.packageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+  .packageGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
+.packageCard {
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid #e8e0d4;
+  padding: 2rem 1.8rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 14.5rem;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.5s var(--transition-smooth);
+}
+
+.packageCard:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 15px 30px rgba(92, 69, 255, 0.04);
+}
+
+.packageCardSelected {
+  border-color: var(--accent-color);
+  background-color: rgba(92, 69, 255, 0.03); /* var(--accent-soft) with low alpha */
+  box-shadow: 0 20px 45px rgba(92, 69, 255, 0.06);
+}
+
+.packageCardSelected::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1.5px solid var(--accent-color);
+  pointer-events: none;
+}
+
+.packageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.packageName {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  color: var(--text-color);
+  text-transform: uppercase;
+}
+
+.packageCheck {
+  width: 1.1rem;
+  height: 1.1rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: scaleIn 0.3s var(--transition-bounce);
+}
+
+.packageDesc {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--text-color);
+  opacity: 0.7;
+  line-height: 1.6;
+  margin-top: 0.8rem;
+  letter-spacing: 0.01em;
+}
+
+.packageFooter {
+  margin-top: auto;
+}
+
+.packageLabel {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.45;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.packagePrice {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  color: var(--text-color);
+  letter-spacing: 0.02em;
+}
+
+.packageCardSelected .packagePrice {
+  color: var(--accent-color);
+}
+
+/* Inputs and Fields */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.2rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+}
+
+.fieldSpan2 {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .fieldSpan2 {
+    grid-column: span 1;
+  }
+}
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.inputLabel {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: var(--text-color);
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  opacity: 0.8;
+}
+
+.inputLabelRequired::after {
+  content: ' *';
+  color: var(--accent-color);
+}
+
+.textInput {
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.15); /* text color with opacity */
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-color);
+  transition: border-color 0.4s var(--transition-smooth);
+}
+
+.textInput::placeholder {
+  color: var(--text-color);
+  opacity: 0.3;
+}
+
+.textInput:focus {
+  outline: none;
+  border-bottom-color: rgba(26, 26, 26, 0.3);
+}
+
+.focusLine {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.2, 0, 0, 1);
+  pointer-events: none;
+}
+
+.textInput:focus ~ .focusLine {
+  transform: scaleX(1);
+}
+
+/* Custom Select Dropdown */
+.selectWrapper {
+  position: relative;
+}
+
+.selectInput {
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.15);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-color);
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 2rem;
+}
+
+.selectInput:focus {
+  outline: none;
+}
+
+.selectInput:focus ~ .focusLine {
+  transform: scaleX(1);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: var(--text-color);
+  opacity: 0.5;
+  transition: transform 0.3s ease;
+}
+
+.selectInput:focus ~ .selectArrow {
+  transform: translateY(-50%) rotate(180deg);
+  color: var(--accent-color);
+  opacity: 1;
+}
+
+/* Textarea styling */
+.textareaInput {
+  width: 100%;
+  padding: 0.8rem 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(26, 26, 26, 0.15);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-color);
+  resize: none;
+  transition: border-color 0.4s var(--transition-smooth);
+}
+
+.textareaInput:focus {
+  outline: none;
+}
+
+.textareaInput:focus ~ .focusLine {
+  transform: scaleX(1);
+}
+
+/* Custom Checkbox */
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.hiddenInput {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.customCheckbox {
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid rgba(26, 26, 26, 0.25);
+  background-color: transparent;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: all 0.3s var(--transition-smooth);
+  position: relative;
+}
+
+.hiddenInput:focus ~ .customCheckbox {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.hiddenInput:checked ~ .customCheckbox {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.checkboxText {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-color);
+  opacity: 0.75;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.checkboxTextRequired::after {
+  content: ' *';
+  color: var(--accent-color);
+}
+
+/* Custom Radio Group */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  cursor: pointer;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(26, 26, 26, 0.1);
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: all 0.3s var(--transition-smooth);
+  user-select: none;
+}
+
+.radioLabel:hover {
+  border-color: rgba(26, 26, 26, 0.25);
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.radioSelected {
+  border-color: var(--accent-color);
+  background-color: rgba(92, 69, 255, 0.02);
+}
+
+.customRadio {
+  width: 1.15rem;
+  height: 1.15rem;
+  border: 1.5px solid rgba(26, 26, 26, 0.25);
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.hiddenInput:focus ~ .customRadio {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.hiddenInput:checked ~ .customRadio {
+  border-color: var(--accent-color);
+}
+
+.radioInnerDot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: var(--accent-color);
+  transform: scale(0);
+  transition: transform 0.3s var(--transition-bounce);
+}
+
+.hiddenInput:checked ~ .customRadio .radioInnerDot {
+  transform: scale(1);
+}
+
+.radioText {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--text-color);
+  opacity: 0.85;
+  text-transform: uppercase;
+}
+
+/* Feature Selection Pills */
+.pillsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.featurePill {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  padding: 0.6rem 1.2rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #e8e0d4;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.featurePill:hover {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  background-color: rgba(92, 69, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.featurePillSelected {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(92, 69, 255, 0.15);
+}
+
+.featurePillSelected:hover {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  color: white;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Step 5: Review Grid */
+.reviewContainer {
+  background-color: rgba(255, 255, 255, 0.35);
+  border: 1px solid #e8e0d4;
+  padding: 2.2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.reviewRow {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1.5rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(232, 224, 212, 0.5); /* #e8e0d4 with opacity */
+}
+
+.reviewRow:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+@media (max-width: 640px) {
+  .reviewRow {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+}
+
+.reviewLabel {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.20em;
+  color: var(--text-color);
+  opacity: 0.5;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+
+.reviewVal {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.reviewValAccent {
+  color: var(--accent-color);
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Business Type Selection Grid */
+.businessTypeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .businessTypeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.businessTypeCard {
+  background-color: rgba(255, 255, 255, 0.4);
+  border: 1px solid #e8e0d4;
+  padding: 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-smooth);
+  text-align: center;
+}
+
+.businessTypeCard:hover {
+  border-color: var(--accent-color);
+  background-color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-3px);
+}
+
+.businessTypeCardSelected {
+  border-color: var(--accent-color);
+  background-color: rgba(92, 69, 255, 0.03);
+  box-shadow: 0 10px 25px rgba(92, 69, 255, 0.05);
+}
+
+.businessTypeIcon {
+  color: var(--text-color);
+  opacity: 0.4;
+  transition: all 0.3s ease;
+}
+
+.businessTypeCardSelected .businessTypeIcon {
+  color: var(--accent-color);
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.businessTypeText {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  opacity: 0.7;
+}
+
+.businessTypeCardSelected .businessTypeText {
+  opacity: 1;
+  color: var(--accent-color);
+}
+
+/* Validation Errors */
+.errorMsg {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: #df4747; /* Elite premium red */
+  margin-top: 0.45rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  animation: slideInDown 0.3s ease-out;
+}
+
+.errorBanner {
+  background-color: rgba(223, 71, 71, 0.06);
+  border: 1.5px solid #df4747;
+  color: #df4747;
+  padding: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  animation: shake 0.4s ease-in-out;
+}
+
+/* Button Navigation Group */
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(232, 224, 212, 0.5);
+}
+
+.btnBack {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: var(--text-color);
+  padding: 1.1rem 2.2rem;
+  border: 1px solid rgba(26, 26, 26, 0.15);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.btnBack:hover:not(:disabled) {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+.btnBack:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.btnNext {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: white;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid var(--text-color);
+  background-color: var(--text-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.btnNext:hover:not(:disabled) {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(92, 69, 255, 0.15);
+}
+
+.btnNext:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.btnSubmit {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  color: white;
+  padding: 1.1rem 2.2rem;
+  border: 1px solid var(--accent-color);
+  background-color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.4s var(--transition-smooth);
+}
+
+.btnSubmit:hover:not(:disabled) {
+  background-color: var(--text-color);
+  border-color: var(--text-color);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.btnSubmit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Success Card */
+.successCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-h: 60vh;
+  padding: 2rem;
+}
+
+.successIconWrapper {
+  width: 5.5rem;
+  height: 5.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+  color: var(--accent-color);
+  background-color: rgba(92, 69, 255, 0.02);
+}
+
+.successTitle {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-color);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.successDesc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text-color);
+  opacity: 0.8;
+  max-width: 28rem;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* Keyframes */
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}

@@ -7,7 +7,7 @@ import styles from './Testimonials.module.css';
 
 const reviews = [
   {
-    text: "The architectural approach to the front-end was exactly what our brand needed. Metrina team are true digital artisans who understand form and function.",
+    text: "Metrina’s architectural front‑end approach gave us far more than a beautiful brand presence. Our site now loads faster, converts better, and feels like a genuine experience—not just a page. They truly understand how form and function drive business results.",
     author: "SOPHIA CHEN",
     company: "LUMINA",
     rating: 5,
@@ -15,7 +15,7 @@ const reviews = [
     color: "oklch(65% 0.15 260)", // Deep Indigo/Blue
   },
   {
-    text: "Beyond just code, they understand the spatial relationship between design and user experience. Precise and effortless.",
+    text: "Metrina didn’t just write code—they reshaped how our entire platform breathes. Their spatial UX logic cut our new user onboarding time by 40%, and the interface now feels effortlessly precise. A true masterclass in design‑engineering synergy.",
     author: "MARCUS VANCE",
     company: "VORTEX LABS",
     rating: 5,
@@ -23,7 +23,7 @@ const reviews = [
     color: "oklch(60% 0.12 170)", // Teal/Sage
   },
   {
-    text: "Technical mastery delivered with incredible precision. Performance gains were immediate.",
+    text: "Metrina brought genuine technical precision to our research portal. Our load times dropped from over 4 seconds to well under 1 second, and the performance gains were immediate across the entire lab team. Exactly the kind of rigor biotech demands.",
     author: "ELENA ROSSI",
     company: "ETHELIA BIOLOGICS",
     rating: 5,
@@ -31,7 +31,7 @@ const reviews = [
     color: "oklch(60% 0.15 15)", // Warm Earth/Red
   },
   {
-    text: "Their ability to translate complex requirements into intuitive interfaces is unmatched. A game-changer for our user retention.",
+    text: "Metrina transformed our most tangled enterprise workflows into an interface that feels intuitive and fast. User retention jumped 34% in the first quarter alone. It has been a measurable game‑changer for our business.",
     author: "DAVID PARK",
     company: "NEXUS SYSTEMS",
     rating: 5,
@@ -39,7 +39,7 @@ const reviews = [
     color: "oklch(70% 0.1 80)", // Ochre/Gold
   },
   {
-    text: "The level of detail in their work is astounding. They don't just build sites; they construct digital identities with architectural rigor.",
+    text: "The level of detail is astounding. Metrina didn’t just build us a site—they constructed a complete digital identity with architectural rigor. Our brand consistency scores and user trust metrics both climbed sharply within weeks of launch.",
     author: "LIAM SMITH",
     company: "AETHER FORGE",
     rating: 5,
