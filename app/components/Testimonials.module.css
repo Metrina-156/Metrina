@@ -1,203 +1,437 @@
+/* ─────────────────────────────────────────────
+   TESTIMONIALS — Dark inverted section
+   Matches the rhythmic dark/light alternation
+   established by SkillsOrbit.
+   ───────────────────────────────────────────── */
+
 .section {
-  background-color: var(--bg-color);
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
   overflow: hidden;
   position: relative;
   padding: 15vh 0;
 }
 
+/* ── Container ──────────────────────────────── */
 .container {
   max-width: 1400px;
+  margin: 0 auto;
   padding: 0 6vw;
 }
 
+/* ── Header ─────────────────────────────────── */
 .header {
-  margin-bottom: 10vh;
-  max-width: 60ch;
+  margin-bottom: 8vh;
 }
 
 .label {
   display: block;
-  font-size: 0.7rem;
-  font-weight: 800;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--accent-color);
-  margin-bottom: 1.5rem;
+  color: oklch(60% 0.22 268);
+  margin-bottom: 2rem;
 }
 
 .title {
-  font-family: var(--font-heading);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  line-height: 1;
-  color: var(--text-color);
-  margin: 0;
+  font-family: var(--font-heading), serif;
+  font-size: clamp(3rem, 6.5vw, 6rem);
   font-weight: 400;
+  line-height: 1.02;
   letter-spacing: -0.03em;
+  color: oklch(96% 0.005 260);
+  margin: 0;
 }
 
-.grid {
+/* ── Stage layout ───────────────────────────── */
+.stage {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-  align-items: stretch;
+  grid-template-columns: 1fr 28rem;
+  gap: 4vw;
+  align-items: start;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.5);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  padding: 3rem;
+/* ── Glass panel ────────────────────────────── */
+/*
+   Single purposeful use of glassmorphism:
+   A frosted surface inside an already-dark
+   environment creates depth through contrast,
+   not decoration.
+*/
+.glassPanel {
+  position: relative;
+  background: oklch(100% 0 0 / 0.04);
+  border: 1px solid oklch(100% 0 0 / 0.09);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 4rem 4.5rem 4.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  transition: all 0.5s var(--transition-smooth);
-  position: relative;
+  gap: 3rem;
+  min-height: 420px;
+}
+
+/* Ambient glow — top-left corner only */
+.glassPanel::before {
+  content: '';
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(
+    circle at center,
+    oklch(60% 0.22 268 / 0.12) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ── Quote glyph ────────────────────────────── */
+.quoteGlyph {
+  font-family: var(--font-heading), serif;
+  font-size: 8rem;
+  line-height: 0.6;
+  color: oklch(60% 0.22 268);
+  opacity: 0.25;
+  user-select: none;
+  position: absolute;
+  top: 3rem;
+  right: 3.5rem;
+}
+
+/* ── Quote block ────────────────────────────── */
+.quoteBlock {
+  margin: 0;
+  flex: 1;
+}
+
+.quoteText {
+  font-family: var(--font-heading), serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.75rem);
+  line-height: 1.55;
+  font-weight: 400;
+  color: oklch(93% 0.005 260);
+  letter-spacing: -0.01em;
+  max-width: 62ch;
+  margin: 0;
+  /* transitions managed by GSAP */
+}
+
+/* ── Quote meta ─────────────────────────────── */
+.quoteMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.authorLine {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: oklch(70% 0.005 260);
+  letter-spacing: 0.01em;
+  margin: 0;
+}
+
+.result {
+  display: inline-block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: oklch(60% 0.22 268);
+  border: 1px solid oklch(60% 0.22 268 / 0.3);
+  padding: 0.35em 0.9em;
+  align-self: flex-start;
+}
+
+/* ── Progress track ─────────────────────────── */
+.progressTrack {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: oklch(100% 0 0 / 0.07);
   overflow: hidden;
 }
 
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
+.progressFill {
+  height: 100%;
   width: 100%;
-  height: 2px;
-  background-color: var(--accent-color);
+  background: oklch(60% 0.22 268);
   transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.6s var(--transition-smooth);
+  transform-origin: left center;
+  /* Animation driven by GSAP */
 }
 
-.card:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 0, 0, 0.08);
-  transform: translateY(-8px);
-  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.05);
-}
-
-.card:hover::before {
-  transform: scaleX(1);
-}
-
-/* Bento Grid Configuration */
-.card:nth-child(1) { grid-column: span 8; min-height: 400px; }
-.card:nth-child(2) { grid-column: span 4; }
-.card:nth-child(3) { grid-column: span 4; }
-.card:nth-child(4) { grid-column: span 4; }
-.card:nth-child(5) { grid-column: span 4; }
-
-.cardHeader {
-  margin-bottom: 2.5rem;
-}
-
-.cardBody {
-  flex: 1;
-  margin-bottom: 3rem;
-}
-
-.quoteIcon {
-  color: var(--accent-color);
-  opacity: 0.15;
-  margin-bottom: 1.5rem;
-}
-
-.reviewText {
-  font-family: var(--font-body);
-  font-size: clamp(1rem, 1.2vw, 1.25rem);
-  line-height: 1.6;
-  color: var(--text-color);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  opacity: 0.9;
-}
-
-.cardFooter {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.authorSection {
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 4px; /* Architectural square with slight rounding */
-  display: flex;
+/* ── Mobile/Tablet navigation ─────────────── */
+.navButtonLeft,
+.navButtonRight {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  transition: transform 0.5s var(--transition-bounce);
+  background: oklch(100% 0 0 / 0.03);
+  border: 1px solid oklch(100% 0 0 / 0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  color: oklch(90% 0.005 260);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s var(--transition-smooth);
 }
 
-.meta {
+.navButtonLeft:hover,
+.navButtonRight:hover {
+  background: oklch(100% 0 0 / 0.08);
+  color: oklch(96% 0.005 260);
+  border-color: oklch(100% 0 0 / 0.15);
+}
+
+.navButtonLeft:active,
+.navButtonRight:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.navButtonLeft {
+  left: -22px;
+}
+
+.navButtonRight {
+  right: -22px;
+}
+
+.dotsIndicator {
+  display: none;
+  justify-content: center;
+  gap: 0.6rem;
+  position: absolute;
+  bottom: 1.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: oklch(100% 0 0 / 0.2);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s var(--transition-smooth);
+}
+
+.dotActive {
+  background: oklch(60% 0.22 268);
+  transform: scale(1.3);
+}
+
+/* ── Selector nav ───────────────────────────── */
+.selector {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  border-top: 1px solid oklch(100% 0 0 / 0.07);
 }
 
-.authorName {
-  font-family: var(--font-heading);
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--text-color);
-  letter-spacing: 0.02em;
+.selectorItem {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 1.2rem;
+  row-gap: 0.25rem;
+  padding: 1.6rem 0;
+  border-bottom: 1px solid oklch(100% 0 0 / 0.07);
+  text-align: left;
+  background: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  transition:
+    background-color 0.35s cubic-bezier(0.2, 0, 0, 1),
+    padding-left 0.35s cubic-bezier(0.2, 0, 0, 1);
+  position: relative;
 }
 
-.authorCompany {
-  font-family: var(--font-body);
+.selectorItem::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 0%;
+  background: oklch(60% 0.22 268);
+  transition: height 0.4s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.selectorItem:hover {
+  background-color: oklch(100% 0 0 / 0.03);
+  padding-left: 0.75rem;
+}
+
+.selectorActive {
+  padding-left: 0.75rem;
+}
+
+.selectorActive::after {
+  height: 100%;
+}
+
+.selectorIndex {
+  font-family: var(--font-body), sans-serif;
   font-size: 0.65rem;
-  opacity: 0.5;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
+  color: oklch(50% 0.005 260);
+  letter-spacing: 0.05em;
+  grid-row: 1;
+  grid-column: 1;
+  padding-top: 0.15rem;
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.stars {
-  display: flex;
-  gap: 3px;
+.selectorActive .selectorIndex {
+  color: oklch(60% 0.22 268);
 }
 
-.starFilled {
-  color: var(--accent-color);
+.selectorCompany {
+  font-family: var(--font-heading), serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: oklch(70% 0.005 260);
+  letter-spacing: -0.01em;
+  grid-row: 1;
+  grid-column: 2;
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1);
 }
 
-.starEmpty {
-  color: rgba(0, 0, 0, 0.1);
+.selectorActive .selectorCompany,
+.selectorItem:hover .selectorCompany {
+  color: oklch(96% 0.005 260);
 }
 
-@media (max-width: 1200px) {
-  .card:nth-child(n) {
-    grid-column: span 6;
+.selectorResult {
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: oklch(45% 0.005 260);
+  letter-spacing: 0.02em;
+  grid-row: 2;
+  grid-column: 2;
+  transition: color 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.selectorActive .selectorResult {
+  color: oklch(58% 0.22 268 / 0.8);
+}
+
+/* ── Reduced motion ─────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .quoteText,
+  .authorLine,
+  .result {
+    transition: none !important;
+  }
+  .progressFill {
+    transition: none !important;
+  }
+  .selectorItem,
+  .selectorItem::after,
+  .selectorCompany,
+  .selectorIndex,
+  .selectorResult {
+    transition: none !important;
+  }
+  .navButtonLeft,
+  .navButtonRight,
+  .dot {
+    transition: none !important;
+  }
+}
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 1100px) {
+  .stage {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .selector {
+    display: none !important;
+  }
+
+  .navButtonLeft,
+  .navButtonRight,
+  .dotsIndicator {
+    display: flex;
+  }
+
+  .glassPanel {
+    padding: 4rem 3.5rem 5rem;
   }
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 10vh 0;
-  }
-  
-  .grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    padding: 10vh 0 12vh; /* Top padding restored */
   }
 
-  .card:nth-child(n) {
-    grid-column: span 1;
-    padding: 2.5rem 2rem;
+  .navButtonLeft {
+    left: 8px;
+  }
+
+  .navButtonRight {
+    right: 8px;
+  }
+
+  .glassPanel {
+    padding: 5rem 3rem 5.5rem;
+    min-height: auto;
+    gap: 2.2rem;
+  }
+
+  .quoteGlyph {
+    font-size: 5rem;
+    top: 1.8rem;
+    right: 2rem;
+  }
+
+  .quoteText {
+    font-size: clamp(1.15rem, 4.5vw, 1.4rem);
   }
 
   .title {
-    font-size: 2.8rem;
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .glassPanel {
+    padding: 5rem 2rem 5.5rem;
+  }
+
+  .quoteGlyph {
+    display: none;
+  }
+
+  .navButtonLeft {
+    left: 4px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .navButtonRight {
+    right: 4px;
+    width: 38px;
+    height: 38px;
   }
 }
