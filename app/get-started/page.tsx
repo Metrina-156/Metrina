@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useSearchParams } from 'next/navigation';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import InquiryForm from '../../components/InquiryForm';
 
 function GetStartedContent() {
@@ -22,7 +22,7 @@ export default function GetStartedPage() {
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#1a1a1a] flex flex-col font-sans selection:bg-[#008080]/20">
       {/* Editorial Header */}
-      <header 
+      <header
         style={{
           width: '100%',
           padding: '2rem 6vw',
@@ -39,12 +39,12 @@ export default function GetStartedPage() {
       >
         {/* METRINA Brand Identifier (Left) */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-          <Image 
-            src="/vite.png" 
-            alt="" 
-            width={38} 
-            height={38} 
-            style={{ height: '38px', width: 'auto' }} 
+          <Image
+            src="/vite.png"
+            alt=""
+            width={38}
+            height={38}
+            style={{ height: '38px', width: 'auto' }}
             priority
           />
           <span
@@ -64,8 +64,8 @@ export default function GetStartedPage() {
         </div>
 
         {/* Return Home (Right) */}
-        <Link 
-          href="/" 
+        <Link
+          href="/"
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -78,8 +78,9 @@ export default function GetStartedPage() {
             opacity: 0.7
           }}
         >
-          <ArrowLeft size={16} />
+
           <span>Return Home</span>
+          <ArrowRight size={16} />
         </Link>
       </header>
 

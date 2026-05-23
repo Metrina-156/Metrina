@@ -18,8 +18,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata = {
-  title: 'METRINA |',
-  description: 'Elite Web Developer Portfolio - Bespoke, technically sophisticated web experiences.',
+  title: 'METRINA | Custom Web Development',
+  description: 'Build your webpage with us - Bespoke, technically sophisticated web experiences.',
   icons: {
     icon: '/favicon.svg',
   },

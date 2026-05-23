@@ -14,8 +14,8 @@ const Contact = () => {
           Let&apos;s build something.
         </h2>
 
-        <a href="mailto:hello@metrina.tech" className={`${styles.email} interactive`}>
-          hello@metrina.tech
+        <a href="/get-started" className={`${styles.ctaButton} interactive`}>
+          Request info
         </a>
 
         <div className={styles.socials}>

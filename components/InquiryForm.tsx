@@ -224,7 +224,7 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
     { label: 'Blog', icon: <PenTool size={20} /> },
     { label: 'Other', icon: <MoreHorizontal size={20} /> },
   ];
-  
+
   const featuresList = [
     'Contact Form', 'Blog', 'Payment Gateway', 'CMS', 'SEO Optimization', 'Animations', 'Multilingual', 'Custom Dashboard'
   ];
@@ -240,8 +240,8 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
         </span>
       </div>
       <div className={styles.progressTrack}>
-        <div 
-          className={styles.progressBar} 
+        <div
+          className={styles.progressBar}
           style={{ width: `${(step / 5) * 100}%` }}
         />
       </div>
@@ -287,7 +287,7 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
                         </p>
                         <div className={styles.packageFooter}>
                           <span className={styles.packageLabel}>
-                            Investment
+                            Starting at
                           </span>
                           <span className={`${styles.packagePrice} serif`}>
                             {pkg.price}
@@ -380,7 +380,7 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
                   <h2 className={`${styles.stepTitle} serif`}>
                     Your Project
                   </h2>
-                  
+
                   <div className={styles.inputGroup}>
                     <label className={`${styles.inputLabel} ${styles.inputLabelRequired}`}>
                       Business Type
@@ -543,7 +543,7 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
                   <h2 className={`${styles.stepTitle} serif`}>
                     Review Details
                   </h2>
-                  
+
                   <div className={styles.reviewContainer}>
                     <div className={styles.reviewRow}>
                       <span className={styles.reviewLabel}>Package</span>
@@ -579,7 +579,7 @@ export default function InquiryForm({ initialPackage }: InquiryFormProps) {
                     </div>
                   </div>
 
-                  <div className="pt-2">
+                  <div>
                     <label className={styles.checkboxLabel}>
                       <input
                         type="checkbox"

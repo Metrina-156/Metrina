@@ -41,9 +41,9 @@ const About = () => {
 
         <div className={styles.textContainer} ref={textRef}>
           <p className={`${styles.philosophy} serif`}>
-            Metrina is a group of young and enthusiastic engineers developing real world application.
+            Metrina is a team of engineers specialized in developing real world application.
             <br /><br />
-            We are here to build an fully customized website to satisfy your needs and to boost your brands reach.
+            We are here to build a fully customized website to satisfy your needs and to boost your brands reach.
           </p>
 
           <div className={styles.stats}>
