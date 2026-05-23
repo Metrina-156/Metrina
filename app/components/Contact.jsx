@@ -21,7 +21,7 @@ const Contact = () => {
         <div className={styles.socials}>
           <a href="https://www.linkedin.com/company/metrina-tech/" className="interactive">LINKEDIN</a>
           <a href="https://x.com/metrina_tech" className="interactive">X / TWITTER</a>
-          <a href="https://www.instagram.com/metrina.devs" className="interactive">INSTAGRAM</a>
+          <a href="https://www.instagram.com/metrina.tech" className="interactive">INSTAGRAM</a>
         </div>
       </div>
     </section>

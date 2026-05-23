@@ -2,205 +2,199 @@
   background-color: var(--bg-color);
   overflow: hidden;
   position: relative;
+  padding: 15vh 0;
 }
 
 .container {
   max-width: 1400px;
-  padding: 0 5vw;
+  padding: 0 6vw;
 }
 
 .header {
-  margin-bottom: 12vh;
-  position: relative;
+  margin-bottom: 10vh;
+  max-width: 60ch;
 }
 
 .label {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: oklch(40% 0.01 80);
-  margin-bottom: 2rem;
+  color: var(--accent-color);
+  margin-bottom: 1.5rem;
 }
 
 .title {
-  font-size: clamp(3rem, 8vw, 6rem);
-  line-height: 0.95;
-  color: oklch(20% 0.01 80);
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1;
+  color: var(--text-color);
   margin: 0;
-  font-weight: 300;
-  letter-spacing: -0.04em;
-}
-
-.headerLine {
-  width: 120px;
-  height: 1px;
-  background-color: var(--accent-color);
-  margin-top: 3rem;
+  font-weight: 400;
+  letter-spacing: -0.03em;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  /* 6 columns for 3+2 layout */
-  gap: 2rem;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
   align-items: stretch;
 }
 
 .card {
-  background: white;
-  border: 1px solid oklch(90% 0.01 80);
-  padding: 0;
-  /* Padding moved to sub-containers */
-  border-radius: 2px;
-  /* Architecturally sharp */
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  padding: 3rem;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.6s var(--transition-smooth),
-    background-color 0.6s var(--transition-smooth);
+  justify-content: space-between;
+  transition: all 0.5s var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
 }
 
-.cardHeader {
-  padding: 2rem 3rem 1.2rem;
-  border-bottom: 1px solid oklch(95% 0.01 80);
-}
-
-.cardFooter {
-  padding: 1.2rem 3rem 1.8rem;
-  margin-top: auto;
-  border-top: 1px solid oklch(95% 0.01 80);
-  display: flex;
-  justify-content: flex-end;
-  /* Align stars to the bottom-right for editorial balance */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s var(--transition-smooth);
 }
 
 .card:hover {
-  border-color: var(--accent-color);
-  background-color: oklch(99.5% 0.005 80);
+  background-color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.08);
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.05);
 }
 
-/* 3 cards in first row, spanning 2 cols each */
-.card:nth-child(1),
-.card:nth-child(2),
-.card:nth-child(3) {
-  grid-column: span 2;
-  min-height: 380px;
+.card:hover::before {
+  transform: scaleX(1);
 }
 
-/* 2 cards in second row, spanning 3 cols each */
-.card:nth-child(4),
-.card:nth-child(5) {
-  grid-column: span 3;
-  min-height: 300px;
+/* Bento Grid Configuration */
+.card:nth-child(1) { grid-column: span 8; min-height: 400px; }
+.card:nth-child(2) { grid-column: span 4; }
+.card:nth-child(3) { grid-column: span 4; }
+.card:nth-child(4) { grid-column: span 4; }
+.card:nth-child(5) { grid-column: span 4; }
+
+.cardHeader {
+  margin-bottom: 2.5rem;
 }
 
 .cardBody {
-  padding: 2rem 2rem;
   flex: 1;
-}
-
-.quoteWrapper {
-  position: relative;
+  margin-bottom: 3rem;
 }
 
 .quoteIcon {
-  color: #000;
-  opacity: 0.3;
-  /* Increased opacity for better visibility */
-  stroke-width: 2px;
-  /* Thicker stroke for a clear 'outline' feel */
+  color: var(--accent-color);
+  opacity: 0.15;
   margin-bottom: 1.5rem;
 }
 
 .reviewText {
-  font-size: clamp(1.1rem, 1.4vw, 1.3rem);
-  line-height: 1.45;
-  color: oklch(30% 0.01 80);
-  font-weight: 300;
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.2vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-color);
+  font-weight: 400;
   letter-spacing: -0.01em;
+  opacity: 0.9;
+}
+
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .authorSection {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .avatar {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  border-radius: 4px; /* Architectural square with slight rounding */
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
-  font-size: 0.65rem;
-  font-weight: 700;
+  font-size: 0.7rem;
+  font-weight: 800;
   letter-spacing: 0.05em;
-  transition: transform 0.6s var(--transition-smooth);
-}
-
-.card:hover .avatar {
-  transform: scale(1.1);
+  transition: transform 0.5s var(--transition-bounce);
 }
 
 .meta {
   display: flex;
   flex-direction: column;
+  gap: 0.2rem;
 }
 
 .authorName {
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: oklch(20% 0.01 80);
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color);
+  letter-spacing: 0.02em;
 }
 
 .authorCompany {
+  font-family: var(--font-body);
   font-size: 0.65rem;
-  opacity: 0.4;
-  font-weight: 500;
+  opacity: 0.5;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
 }
 
 .stars {
   display: flex;
-  gap: 2px;
+  gap: 3px;
 }
 
 .starFilled {
-  color: #FFB800; /* Star Gold */
+  color: var(--accent-color);
 }
 
 .starEmpty {
-  color: oklch(90% 0.01 80);
+  color: rgba(0, 0, 0, 0.1);
 }
 
-
-@media (max-width: 1024px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-  }
-
-  .card:nth-child(1),
-  .card:nth-child(2),
-  .card:nth-child(3),
-  .card:nth-child(4),
-  .card:nth-child(5) {
-    grid-column: span 1;
-    min-height: auto;
+@media (max-width: 1200px) {
+  .card:nth-child(n) {
+    grid-column: span 6;
   }
 }
 
 @media (max-width: 768px) {
+  .section {
+    padding: 10vh 0;
+  }
+  
   .grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .card {
-    padding: 2rem;
+  .card:nth-child(n) {
+    grid-column: span 1;
+    padding: 2.5rem 2rem;
   }
 
   .title {
