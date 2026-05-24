@@ -171,9 +171,10 @@
     100% { transform: rotateZ(360deg) translateX(150px) rotateZ(-360deg); }
   }
   .skillIcon {
-    width: 45px;
-    height: 45px;
-    font-size: 1.4rem;
+    width: 54px;
+    height: 54px;
+    padding: 13px;
+    font-size: 1.6rem;
   }
 }
 
@@ -188,6 +189,12 @@
   @keyframes orbitRotate {
     0% { transform: rotateZ(0deg) translateX(120px) rotateZ(0deg); }
     100% { transform: rotateZ(360deg) translateX(120px) rotateZ(-360deg); }
+  }
+  .skillIcon {
+    width: 46px;
+    height: 46px;
+    padding: 11px;
+    font-size: 1.4rem;
   }
   .tooltipText {
     font-size: 1.5rem;

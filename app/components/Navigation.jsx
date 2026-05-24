@@ -7,7 +7,7 @@ import { usePathname } from 'next/navigation';
 
 const Navigation = () => {
   const pathname = usePathname();
-  
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -57,7 +57,7 @@ const Navigation = () => {
 
   return (
     <>
-      <nav 
+      <nav
         aria-label="Main navigation"
         style={{
           position: 'fixed',
@@ -76,7 +76,7 @@ const Navigation = () => {
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '1.2rem' }}>
-          <button 
+          <button
             className="interactive"
             aria-label="Go to home"
             onClick={() => scrollToSection(null)}
@@ -84,12 +84,12 @@ const Navigation = () => {
             onMouseLeave={() => setIsLogoHovered(false)}
             style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}
           >
-            <Image 
-              src="/vite.png" 
-              alt="" 
-              width={38} 
-              height={38} 
-              style={{ height: '38px', width: 'auto' }} 
+            <Image
+              src="/logo.png"
+              alt=""
+              width={52}
+              height={52}
+              style={{ height: '52px', width: 'auto' }}
             />
             <span
               className="serif"
@@ -120,9 +120,9 @@ const Navigation = () => {
         </div>
 
         <div className="mobile-nav-toggle" style={{ display: 'none' }}>
-          <button 
-            onClick={toggleMenu} 
-            className="interactive" 
+          <button
+            onClick={toggleMenu}
+            className="interactive"
             aria-expanded={isMenuOpen}
             aria-controls="mobile-menu"
             aria-label={isMenuOpen ? "Close menu" : "Open menu"}
@@ -133,7 +133,7 @@ const Navigation = () => {
         </div>
       </nav>
 
-      <div 
+      <div
         id="mobile-menu"
         style={{
           position: 'fixed',

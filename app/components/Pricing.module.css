@@ -34,6 +34,8 @@
   flex-direction: column;
   position: relative;
   transition: all 0.6s var(--transition-smooth);
+  will-change: transform, opacity;
+  opacity: 1; /* GSAP overrides this; fallback keeps cards visible if JS is slow */
 }
 
 .card:hover {
