@@ -1,0 +1,131 @@
+/**
+ * Generates the HTML layout for the Client Confirmation Email for "Request Info" submissions.
+ * Warm, personal tone — acknowledging a general enquiry, not a full project brief.
+ * @param {Object} data - { name, email, phone, message }
+ * @returns {string} HTML string
+ */
+export function getRequestInfoClientEmailTemplate(data: any) {
+  const firstName = data.name ? data.name.split(' ')[0] : 'there';
+
+  return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>We've received your message — Metrina</title>
+  <style>
+    body {
+      background-color: #FAF7F2;
+      color: #1a1a1a;
+      font-family: 'Times New Roman', Times, serif;
+      margin: 0;
+      padding: 40px 20px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #FAF7F2;
+      border: 1px solid #e8e0d4;
+      padding: 40px;
+    }
+    .header {
+      border-bottom: 1px solid #e8e0d4;
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    .logo {
+      font-size: 24px;
+      letter-spacing: 0.15em;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #008080;
+      margin: 0 0 5px 0;
+    }
+    .subtitle {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: #1a1a1a;
+      opacity: 0.5;
+      margin: 0;
+    }
+    .content {
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 16px;
+      line-height: 1.6;
+      color: #1a1a1a;
+      margin-bottom: 30px;
+    }
+    .salutation {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+    .highlight-box {
+      border-left: 2px solid #008080;
+      padding: 15px 20px;
+      background-color: #f0f8f8;
+      margin: 25px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .highlight-box strong {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #008080;
+      display: block;
+      margin-bottom: 6px;
+    }
+    .footer {
+      border-top: 1px solid #e8e0d4;
+      padding-top: 25px;
+      margin-top: 40px;
+      text-align: center;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #1a1a1a;
+      opacity: 0.5;
+    }
+    .contact-link {
+      color: #008080;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="header">
+      <div class="logo">METRINA</div>
+      <div class="subtitle">Bespoke Web Development</div>
+    </div>
+
+    <div class="content">
+      <p class="salutation">Hello ${firstName},</p>
+
+      <p>Thank you for reaching out. We have received your message and a member of the METRINA team will be in touch with you shortly.</p>
+
+      <div class="highlight-box">
+        <strong>Your Message</strong>
+        ${data.message}
+      </div>
+
+      <p>We typically respond within a few hours during business hours. In the meantime, feel free to explore our work at <a href="https://metrina.tech" class="contact-link">metrina.tech</a> or reach us directly at <a href="mailto:hello@metrina.dev" class="contact-link">hello@metrina.dev</a>.</p>
+
+      <p style="margin-top: 30px;">Warm regards,<br>
+      <strong>METRINA Design Team</strong><br>
+      <span style="font-size: 13px; opacity: 0.7;"><a href="https://metrina.tech" style="color: #1a1a1a; text-decoration: none;">metrina.tech</a></span></p>
+    </div>
+
+    <div class="footer">
+      © 2026 METRINA. All rights reserved.
+    </div>
+  </div>
+</body>
+</html>
+  `;
+}

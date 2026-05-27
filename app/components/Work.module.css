@@ -115,6 +115,16 @@
   gap: 1.5rem;
 }
 
+.privateLabel {
+  align-self: flex-start;
+  color: var(--text-color);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  opacity: 0.5;
+  cursor: default;
+}
+
 .arrow {
   font-size: 1.2rem;
   transition: transform 0.3s var(--transition-smooth);

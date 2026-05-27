@@ -14,7 +14,7 @@ const Contact = () => {
           Let&apos;s build something.
         </h2>
 
-        <a href="/get-started" className={`${styles.ctaButton} interactive`}>
+        <a href="/request-info" className={`${styles.ctaButton} interactive`}>
           Request info
         </a>
 

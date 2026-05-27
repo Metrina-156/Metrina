@@ -51,7 +51,7 @@ const Navigation = () => {
     border: 'transparent',
   };
 
-  if (pathname && pathname.startsWith('/get-started')) {
+  if (pathname && (pathname.startsWith('/get-started') || pathname.startsWith('/request-info'))) {
     return null;
   }
 
