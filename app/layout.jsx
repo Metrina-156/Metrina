@@ -21,7 +21,7 @@ export const metadata = {
   title: 'METRINA | Custom Web Development',
   description: 'Build your webpage with us - Bespoke, technically sophisticated web experiences.',
   icons: {
-    icon: '/favicon.svg',
+    icon: '/vite.png',
   },
 };
 

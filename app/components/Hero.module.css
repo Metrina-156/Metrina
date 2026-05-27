@@ -131,8 +131,8 @@
 
 .cta {
   padding: 1.4rem 1.5rem;
-  background: #008080;
-  color: white;
+  background: rgb(91, 69, 255);
+  color: rgb(244, 242, 242);
   text-transform: uppercase;
   letter-spacing: 0.35em;
   font-size: 0.8rem;
